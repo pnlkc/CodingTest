@@ -1,4 +1,1 @@
-fun main() {
-    val input = readln().split(" ").map { it.reversed().toInt() }
-    println(input.maxOrNull())
-}
+fun main() = println(readln().split(" ").map { it.reversed().toInt() }.maxOrNull())
