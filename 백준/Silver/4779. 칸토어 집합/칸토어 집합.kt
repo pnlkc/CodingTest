@@ -1,26 +1,21 @@
 import java.util.*
+import kotlin.math.pow
 
 fun main() = with(Scanner(System.`in`)) {
     while (hasNextInt()) {
-        var num = 1
-        repeat(nextInt()) {
-            num *= 3
-        }
-
-        var string = CharArray(num) { '-' }.joinToString("")
-        string = calc(string, 0, num - 1)
-
-        println(string)
+        val num = 3.0.pow(nextDouble()).toInt()
+        val array = CharArray(num) { '-' }
+        calc(array, 0, num - 1)
+        println(array.joinToString(""))
     }
 }
 
-fun calc(string: String, s: Int, e: Int): String {
-    if (string.length < 3) return string
-
+fun calc(array: CharArray, s: Int, e: Int) {
+    if (s == e) return
     val r = (e - s + 1) / 3
-    val a = calc(string.slice(s until s + r), 0, r - 1)
-    val b = CharArray(r) { ' ' }.joinToString("")
-    val c = calc(string.slice(s + r + r..e), 0, r - 1)
-
-    return a + b + c
+    calc(array, s, s + r - 1)
+    for (i in s + r until  s+ r + r) {
+        array[i] = ' '
+    }
+    calc(array, s + r + r, e)
 }
