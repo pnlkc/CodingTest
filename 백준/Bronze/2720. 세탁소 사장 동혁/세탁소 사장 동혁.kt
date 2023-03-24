@@ -1,10 +1,10 @@
 fun main() {
     repeat(readln().toInt()) {
-        var answer = ""
+        val answer = StringBuilder()
         var num = readln().toInt()
 
         val calc: (Int) -> Unit = { n ->
-            answer += if (n != 25) " " + num / n else num / n
+            answer.append(if (n != 25) " " + num / n else num / n)
             num %= n
         }
 
@@ -13,6 +13,6 @@ fun main() {
         calc(5)
         calc(1)
 
-        println(answer)
+        println(String(answer))
     }
 }
