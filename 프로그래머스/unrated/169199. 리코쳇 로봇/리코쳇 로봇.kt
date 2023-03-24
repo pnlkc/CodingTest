@@ -22,7 +22,10 @@ class Solution {
     }
 
     fun move(c: IntArray, g: IntArray, board: Array<String>, map: MutableMap<String, Int>, n: Int) {
+        // 현재까지의 최단 거리보다 길면 제외
         if (map["${g[0]} ${g[1]}"] != null && map["${g[0]} ${g[1]}"]!! < n) return
+
+        // 현재 위치가 목표 위치면 제외
         if (c[0] != g[0] || c[1] != g[0]) {
             val y = intArrayOf(1, -1, 0, 0)
             val x = intArrayOf(0, 0, 1, -1)
@@ -42,7 +45,7 @@ class Solution {
 
                 // 같은 자리일 경우 제외
                 if (pos[0] == c[0] && pos[1] == c[1]) continue
-                
+
                 // 같은 자리를 더 빨리 오는 경우 제외
                 if (map["${pos[0]} ${pos[1]}"] == null || map["${pos[0]} ${pos[1]}"]!! > n + 1) {
                     map["${pos[0]} ${pos[1]}"] = n + 1
