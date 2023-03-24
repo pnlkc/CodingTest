@@ -1,9 +1,45 @@
+import java.util.*
+
 class Solution {
     fun solution(board: Array<String>): Int {
-        val map = mutableMapOf<String, Int>()
+        val queue = LinkedList<IntArray>()
+        val isVisit = Array(board.size) { BooleanArray(board[0].length) { false } }
         val (r, g) = findStartEndPos(board)
-        move(r, g, board, map, 0)
-        return map["${g[0]} ${g[1]}"] ?: -1
+        queue.add(intArrayOf(r[0], r[1], 0))
+
+        while (queue.isNotEmpty()) {
+            val c = queue.poll()!!
+            val y = intArrayOf(1, -1, 0, 0)
+            val x = intArrayOf(0, 0, 1, -1)
+
+            for (i in 0..3) {
+                val pos = intArrayOf(c[0], c[1], c[2] + 1)
+
+                // 벽이나 장애물 전까지 이동
+                while (true) {
+                    if (pos[0] + y[i] !in board.indices) break
+                    if (pos[1] + x[i] !in board[0].indices) break
+                    if (board[pos[0] + y[i]][pos[1] + x[i]] == 'D') break
+
+                    pos[0] += y[i]
+                    pos[1] += x[i]
+                }
+
+                // 같은 자리일 경우 제외
+                if (pos[0] == c[0] && pos[1] == c[1]) continue
+                
+                // 현재 위치가 목적지면 값 리턴
+                if (pos[0] == g[0] && pos[1] == g[1]) return pos[2]
+                
+                // 방문한 적이 없는 경우 queue에 추가
+                if (!isVisit[pos[0]][pos[1]]) {
+                    queue.add(pos)
+                    isVisit[pos[0]][pos[1]] = true
+                }
+            }
+        }
+        
+        return -1
     }
 
     // 시작, 목표 위치 찾기
@@ -19,39 +55,5 @@ class Solution {
         }
 
         return intArrayOf() to intArrayOf()
-    }
-
-    fun move(c: IntArray, g: IntArray, board: Array<String>, map: MutableMap<String, Int>, n: Int) {
-        // 현재까지의 최단 거리보다 길면 제외
-        if (map["${g[0]} ${g[1]}"] != null && map["${g[0]} ${g[1]}"]!! < n) return
-
-        // 현재 위치가 목표 위치면 제외
-        if (c[0] != g[0] || c[1] != g[0]) {
-            val y = intArrayOf(1, -1, 0, 0)
-            val x = intArrayOf(0, 0, 1, -1)
-
-            for (i in 0..3) {
-                val pos = c.clone()
-
-                // 벽이나 장애물 전까지 이동
-                while (true) {
-                    if (pos[0] + y[i] !in board.indices) break
-                    if (pos[1] + x[i] !in board[0].indices) break
-                    if (board[pos[0] + y[i]][pos[1] + x[i]] == 'D') break
-
-                    pos[0] += y[i]
-                    pos[1] += x[i]
-                }
-
-                // 같은 자리일 경우 제외
-                if (pos[0] == c[0] && pos[1] == c[1]) continue
-
-                // 같은 자리를 더 빨리 오는 경우 제외
-                if (map["${pos[0]} ${pos[1]}"] == null || map["${pos[0]} ${pos[1]}"]!! > n + 1) {
-                    map["${pos[0]} ${pos[1]}"] = n + 1
-                    move(pos, g, board, map, n + 1)
-                }
-            }
-        }
     }
 }

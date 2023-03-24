@@ -1,10 +1,10 @@
 # [unrated] 리코쳇 로봇 - 169199 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/169199?language=kotlin) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/169199#qna) 
 
 ### 성능 요약
 
-메모리: 76.4 MB, 시간: 49.76 ms
+메모리: 60.8 MB, 시간: 1.08 ms
 
 ### 구분
 
