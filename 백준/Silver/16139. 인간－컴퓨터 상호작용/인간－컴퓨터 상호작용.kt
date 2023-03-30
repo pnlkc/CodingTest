@@ -1,32 +1,23 @@
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.util.*
-
 fun main() {
-    val br = BufferedReader(InputStreamReader(System.`in`))
     val string = StringBuilder()
-
-    val s = br.readLine()
-    val num = br.readLine().toInt()
-    val arr = Array(s.length + 1) { mutableMapOf<Char, Int>() }
+    val s = readln()
+    val num = readln().toInt()
+    val arr = Array(s.length + 1) { IntArray(26) }
     val exist = s.toSet()
-    exist.forEach { arr[0][it] = 0 }
+    val aCode = 'a'.code
 
     s.forEachIndexed { idx, c ->
         exist.forEach {
-            if (it == c) arr[idx + 1][it] = arr[idx][it]!! + 1
-            else arr[idx + 1][it] = arr[idx][it]!!
+            if (it == c) arr[idx + 1][it.code - aCode] = arr[idx][it.code - aCode] + 1
+            else arr[idx + 1][it.code - aCode] = arr[idx][it.code - aCode]
         }
     }
 
     repeat(num) {
-        val st = StringTokenizer(br.readLine())
-        val c = st.nextToken()[0]
-        val l = st.nextToken().toInt()
-        val r = st.nextToken().toInt()
-        if (!exist.contains(c)) string.append("${0}\n")
-        else string.append("${arr[r + 1][c]!! - arr[l][c]!!}\n")
+        val (c, l, r) = readln().split(" ")
+        if (!exist.contains(c[0])) string.append(0).append("\n")
+        else string.append(arr[r.toInt() + 1][c[0].code - aCode] - arr[l.toInt()][c[0].code - aCode]).append("\n")
     }
-    
+
     println(string.toString())
 }
