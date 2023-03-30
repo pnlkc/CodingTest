@@ -1,8 +1,9 @@
-import java.io.*
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.util.*
 
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
-    val bw = BufferedWriter(OutputStreamWriter(System.out))
     val string = StringBuilder()
 
     val s = br.readLine()
@@ -19,12 +20,13 @@ fun main() {
     }
 
     repeat(num) {
-        val (c, l, r) = br.readLine().split(" ")
-        if (!exist.contains(c[0])) string.append("${0}\n")
-        else string.append("${arr[r.toInt() + 1][c[0]]!! - arr[l.toInt()][c[0]]!!}\n")
+        val st = StringTokenizer(br.readLine())
+        val c = st.nextToken()[0]
+        val l = st.nextToken().toInt()
+        val r = st.nextToken().toInt()
+        if (!exist.contains(c)) string.append("${0}\n")
+        else string.append("${arr[r + 1][c]!! - arr[l][c]!!}\n")
     }
-
-    bw.write(string.toString())
-    bw.flush()
-    bw.close()
+    
+    println(string.toString())
 }
