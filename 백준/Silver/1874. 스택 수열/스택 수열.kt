@@ -3,33 +3,22 @@ import java.util.*
 fun main() {
     val n = readln().toInt()
     val stack = Stack<Int>()
-    val queue = LinkedList<Int>()
-    val answer = StringBuilder()
-    val logic: () -> Unit = {
-        while (true) {
-            if (stack.isEmpty() || queue.isEmpty()) break
-
-            if (stack.peek()!! == queue.peek()!!) {
-                stack.pop()
-                queue.poll()
-                answer.append('-').append("\n")
-            } else {
-                break
-            }
-        }
-    }
+    val s = StringBuilder()
+    var max = 0
 
     repeat(n) {
-        queue.add(readln().toInt())
+        val c = readln().toInt()
+
+        for (i in max + 1..c) {
+            stack.push(i)
+            s.append('+').append("\n")
+        }
+
+        if (stack.peek()!! != c) return println("NO")
+        stack.pop()
+        s.append('-').append("\n")
+        max = maxOf(max, c)
     }
 
-    for (i in 1..n) {
-        logic()
-        answer.append('+').append("\n")
-        stack.add(i)
-    }
-
-    logic()
-
-    println(if (stack.isEmpty()) answer.toString() else "NO")
+    println(s.toString())
 }
