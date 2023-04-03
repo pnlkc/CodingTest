@@ -1,14 +1,14 @@
 import java.util.*
 
 fun main() {
-    val (n, m) = readln().split(" ").map { it.toInt() }
-    val target = readln().split(" ").map { it.toInt() }
+    val n = StringTokenizer(readln()).nextToken().toInt()
+    val target = StringTokenizer(readln())
+    val queue = LinkedList((1..n).toList())
     var r = 0
-    val queue = LinkedList<Int>()
-    queue.addAll(1..n)
 
-    for (i in target.indices) {
-        val t = target[i]
+
+    while (target.hasMoreTokens()) {
+        val t = target.nextToken().toInt()
         var count = 0
 
         while (queue.peek() != t) {
