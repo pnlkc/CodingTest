@@ -6,12 +6,12 @@ fun main() {
     val map = mutableMapOf<Int, Int>()
     val n = readln().toInt()
     val st = StringTokenizer(readln())
-    val a = IntArray(n) { 
-        val num = st.nextToken().toInt()
-        if (map[num] == null) map[num] = 1 else map[num] = map[num]!! + 1
-        num
+    val a = IntArray(n) {
+        st.nextToken().toInt().also { num ->
+            if (map[num] == null) map[num] = 1 else map[num] = map[num]!! + 1
+        }
     }
-    
+
     for (i in 0 until n) {
         while (stack.isNotEmpty()) {
             if ((map[a[stack.peek()]] ?: 0) >= (map[a[i]] ?: 0)) break
