@@ -3,18 +3,16 @@ import java.util.StringTokenizer
 
 fun main() {
     val stack = Stack<Int>()
-    val map = mutableMapOf<Int, Int>()
+    val ints = IntArray(1_000_001)
     val n = readln().toInt()
     val st = StringTokenizer(readln())
     val a = IntArray(n) {
-        st.nextToken().toInt().also { num ->
-            if (map[num] == null) map[num] = 1 else map[num] = map[num]!! + 1
-        }
+        st.nextToken().toInt().also { num -> ints[num]++ }
     }
 
     for (i in 0 until n) {
         while (stack.isNotEmpty()) {
-            if ((map[a[stack.peek()]] ?: 0) >= (map[a[i]] ?: 0)) break
+            if (ints[a[stack.peek()]] >= ints[a[i]]) break
             a[stack.peek()] = a[i]
             stack.pop()
         }
