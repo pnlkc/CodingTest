@@ -1,10 +1,10 @@
-import java.util.PriorityQueue
+import java.util.LinkedList
 
 fun main() {
     val (n, m) = readln().split(" ").map(String::toInt)
     val graph = Array(101) { (it + 1..it + 6).toMutableList() }
     val isSpecial = BooleanArray(101)
-    val queue = PriorityQueue<Pair<Int, Int>>(compareBy { it.second })
+    val queue = LinkedList<Pair<Int, Int>>()
     val visit = IntArray(101) { -1 }
 
     repeat(n + m) {
@@ -37,6 +37,6 @@ fun main() {
             if (i == 100) break
         }
     }
-    
+
     println(visit[100])
 }
