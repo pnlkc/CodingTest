@@ -8,7 +8,7 @@ fun main() {
         when (c[0]) {
             "add" -> bit = bit or (1 shl (c[1].toInt() - 1))
             "remove" -> bit = bit and (1 shl (c[1].toInt() - 1)).inv()
-            "check" -> sb.appendLine(if (bit and (1 shl (c[1].toInt() - 1)) == 0) 0 else 1)
+            "check" -> sb.append(if (bit and (1 shl (c[1].toInt() - 1)) == 0) "0\n" else "1\n")
             "toggle" -> bit = bit xor (1 shl (c[1].toInt() - 1))
             "all" -> bit = 0b11111111111111111111
             "empty" -> bit = 0
