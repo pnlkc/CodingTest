@@ -1,21 +1,17 @@
 fun main() {
     val sb = StringBuilder()
-    var set = mutableSetOf<Int>()
+    var bit = 0
 
     repeat(readln().toInt()) {
-        val input = readln().split(" ")
+        val c = readln().split(" ")
 
-        when (input[0]) {
-            "add" -> set.add(input[1].toInt())
-            "remove" -> set.remove(input[1].toInt())
-            "check" -> set.contains(input[1].toInt()).also { sb.appendLine(if (it) 1 else 0) }
-            "toggle" -> {
-                set
-                    .contains(input[1].toInt())
-                    .also { if (it) set.remove(input[1].toInt()) else set.add(input[1].toInt()) }
-            }
-            "all" -> set = (1..20).toMutableSet()
-            "empty" -> set.clear()
+        when (c[0]) {
+            "add" -> bit = bit or (1 shl (c[1].toInt() - 1))
+            "remove" -> bit = bit and (1 shl (c[1].toInt() - 1)).inv()
+            "check" -> sb.appendLine(if (bit and (1 shl (c[1].toInt() - 1)) == 0) 0 else 1)
+            "toggle" -> bit = bit xor (1 shl (c[1].toInt() - 1))
+            "all" -> bit = 0b11111111111111111111
+            "empty" -> bit = 0
         }
     }
 
