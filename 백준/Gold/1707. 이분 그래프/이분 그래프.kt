@@ -20,7 +20,7 @@ fun main() {
 
         p@for (i in 1..v) {
             if (isVisit[i]) continue
-            if (graph[i].size == 0) {
+            if (graph[i].isEmpty()) {
                 isVisit[i] = true
                 continue
             }
