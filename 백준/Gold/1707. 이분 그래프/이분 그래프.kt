@@ -6,11 +6,11 @@ fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
 
     repeat(br.readLine().toInt()) {
-        val (v, e) = br.readLine().split(" ").map { it.toInt() }
+        val (v, e) = br.readLine().split(' ').map(String::toInt)
         val graph = Array(v + 1) { mutableListOf<Int>() }
 
         for(i in 1..e) {
-            val (a, b) = br.readLine().split(" ").map { it.toInt() }
+            val (a, b) = br.readLine().split(' ').map(String::toInt)
             graph[a].add(b)
             graph[b].add(a)
         }
