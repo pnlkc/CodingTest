@@ -19,11 +19,11 @@ fun main() {
         var r = true
 
         p@for (i in 1..v) {
+            if (isVisit[i]) continue
             if (graph[i].size == 0) {
                 isVisit[i] = true
                 continue
             }
-            if (isVisit[i]) continue
 
             val nodeColor = IntArray(v + 1) { -1 }
             val queue = LinkedList<Pair<Int, Int>>()
@@ -36,15 +36,13 @@ fun main() {
                 val (node, color) = queue.poll()!!
 
                 for (j in graph[node]) {
-                    if (isVisit[j]) {
-                        if (nodeColor[j] == color) {
-                            r = false
-                            break@p
-                        }
-                    } else {
+                    if (!isVisit[j]) {
                         queue.add(j to color.inv())
                         isVisit[j] = true
                         nodeColor[j] = color.inv()
+                    } else if (nodeColor[j] == color) {
+                        r = false
+                        break@p
                     }
                 }
             }
