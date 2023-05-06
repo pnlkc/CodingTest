@@ -17,8 +17,7 @@ fun main() {
     for (k in 0 until n) {
         for (i in 0 until n) {
             for (j in 0 until n) {
-                if (i == j) continue
-                if (k == i || k == j) continue
+                if (i == j || k == i || k == j) continue
                 if (dist[i][k] == 0L || dist[k][j] == 0L) continue
 
                 if (dist[i][j] == 0L || dist[i][j] > dist[i][k] + dist[k][j]) {
