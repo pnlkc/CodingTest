@@ -17,8 +17,7 @@ fun main() {
             if (abs(list[s] + list[e]) == 0) return println("${list[s]} ${list[e]}")
         }
 
-        if (list[s] + list[e] < 0) s++
-        else e--
+        if (list[s] + list[e] < 0) s++ else e--
     }
 
     println(min.joinToString(" "))
