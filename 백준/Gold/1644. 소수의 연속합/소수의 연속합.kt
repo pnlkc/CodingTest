@@ -10,14 +10,10 @@ fun main() {
     var sum = 2
 
     while (s <= list.lastIndex) {
-        when {
-            sum == n -> {
-                count++
-                sum -= list[s++]
-            }
-            sum > n -> sum -= list[s++]
-            else -> if (e < list.lastIndex) sum += list[++e] else sum -= list[s++]
-        }
+        if (sum == n) count++
+        
+        if (sum >= n) sum -= list[s++] 
+        else if (e < list.lastIndex) sum += list[++e] else sum -= list[s++]
     }
 
     println(count)
