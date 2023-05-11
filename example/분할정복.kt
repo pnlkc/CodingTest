@@ -1,10 +1,10 @@
 // 분할정복(DivideAndConquer) 알고리즘은 문제를 더 작은 부분 문제로 나누어 해결하는 알고리즘입니다.
 // 일반적으로 분할정복 알고리즘은 O(N * logN)의 시간복잡도를 가집니다.
 // 분할정복은 부분 문제가 서로의 결과에 영향을 주지 않고 독립적인 경우에만 사용할 수 있습니다.
-// 백준 10830번 행렬 제곱
+// ex) 백준 10830번 행렬 제곱
 class 분할정복 {
     // 행렬 거듭제곱 분할정복 처리 문제
-    fun example() {
+    fun divideAndConquer() {
         val (n, b) = readln().split(" ").map { it.toLong() }
         val a = Array(n.toInt()) { readln().split(" ").map { it.toInt() % 1000 }.toIntArray() }
         val result = calc(a, b)
