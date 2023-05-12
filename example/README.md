@@ -8,4 +8,4 @@
 
 2. [LCS(Longest Common Subsequence)](https://github.com/pnlkc/CodingTest/blob/main/example/LCS.kt)
 
-3. [LIS(Longest Increasing Subsequence) - Binary Search]()
+3. [LIS(Longest Increasing Subsequence) - Binary Search](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_Binary_Search.kt)
