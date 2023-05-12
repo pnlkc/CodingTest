@@ -1,27 +1,24 @@
-import java.util.PriorityQueue
-
 fun main() {
     val n = readln().toInt()
-    val pQ = PriorityQueue(compareBy<Triple<Int, Int, String>> { it.second })
-    pQ.add(Triple(n, 0, "$n"))
-    if (n == 1) return println("0\n1")
+    val sb = StringBuilder("$n")
+    val dp = Array(n + 1) { Int.MAX_VALUE to Int.MAX_VALUE }
+    dp[1] = 0 to 0
 
-    while (pQ.isNotEmpty()) {
-        val (num, count, s) = pQ.poll()!!
+    for (i in 1 until n) {
+        val (depth, nextNum) = dp[i]
+        if (depth == Int.MAX_VALUE) continue
 
-        if (num % 3 == 0) {
-            if (num / 3 == 1) return println("${count + 1}\n${s + " ${num / 3}"}")
-            pQ.add(Triple(num / 3, count + 1, s + " ${num / 3}"))
-        }
-
-        if (num % 2 == 0) {
-            if (num / 2 == 1) return println("${count + 1}\n${s + " ${num / 2}"}")
-            pQ.add(Triple(num / 2, count + 1, s + " ${num / 2}"))
-        }
-
-        if (num > 1) {
-            if (num - 1 == 1) return println("${count + 1}\n${s + " ${num - 1}"}")
-            pQ.add(Triple(num - 1, count + 1, s + " ${num - 1}"))
-        }
+        if (i * 3 <= n && dp[i * 3].first > depth + 1) dp[i * 3] = depth + 1 to i
+        if (i * 2 <= n && dp[i * 2].first > depth + 1) dp[i * 2] = depth + 1 to i
+        if (dp[i + 1].first > depth + 1) dp[i + 1] = depth + 1 to i
     }
+
+    var num = n
+    repeat(dp[n].first) {
+        sb.append(" ${dp[num].second}")
+        num = dp[num].second
+    }
+
+    println(dp[n].first)
+    println(sb)
 }
