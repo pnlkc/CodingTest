@@ -11,3 +11,5 @@
 ### 3. [LIS(Longest Increasing Subsequence) - Binary Search](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_Binary_Search.kt)
 
 ### 4. [LIS(Longest Increasing Subsequence) - DP](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_DP.kt)
+
+### 5. [Meet In The Middle](https://github.com/pnlkc/CodingTest/blob/main/example/MEET_IN_THE_MIDDLE.kt)
