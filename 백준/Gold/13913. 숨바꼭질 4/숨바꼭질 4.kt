@@ -2,7 +2,6 @@ import java.util.LinkedList
 
 fun main() {
     val (n, k) = readln().split(' ').map(String::toInt)
-    val mList = mutableListOf(k)
     val queue = LinkedList<Pair<Int, Int>>()
     val map = mutableMapOf<Int, Pair<Int, Int>>()
     queue.add(n to 0)
@@ -27,16 +26,18 @@ fun main() {
         }
 
         if (cn > 0) logic(cn - 1)
-
     }
 
     var current = map[k]
+    val iArr = IntArray(current!!.first + 1)
+    iArr[current.first] = k
+    var idx = iArr.lastIndex - 1
 
-    while (current!!.second != -1) {
-        mList.add(current.second)
+    while (idx >= 0) {
+        iArr[idx--] = current!!.second
         current = map[current.second]
     }
 
     println(map[k]!!.first)
-    println(mList.reversed().joinToString(" "))
+    println(iArr.joinToString(" "))
 }
