@@ -37,7 +37,7 @@ fun main() {
         val temp = StringBuilder()
         var cNum = b
 
-        for (i in arr[cNum].first downTo 1) {
+        repeat (arr[cNum].first) {
             val (cd, prev, command) = arr[cNum]
             temp.append(command)
             cNum = prev
