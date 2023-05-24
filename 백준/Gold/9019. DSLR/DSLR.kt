@@ -1,6 +1,7 @@
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.util.LinkedList
+import java.util.StringTokenizer
 
 fun main() {
     val sb = StringBuilder()
@@ -9,7 +10,9 @@ fun main() {
 
     repeat(tc) {
         val arr = Array(10_001) { Triple(0, -1, ' ') }
-        val (a, b) = br.readLine().split(' ').map(String::toInt)
+        val st = StringTokenizer(br.readLine())
+        val a = st.nextToken().toInt()
+        val b = st.nextToken().toInt()
         val queue = LinkedList<Pair<Int, Int>>()
         queue.add(a to 0)
 
@@ -20,25 +23,23 @@ fun main() {
             if (cd > arr[cn].first) continue
 
             val logic: (Int, Char) -> Unit = { num, command ->
-                if (num != cn) {
-                    if (arr[num].first == 0 || arr[num].first > cd + 1) {
-                        arr[num] = Triple(cd + 1, cn, command)
-                        queue.add(num to cd + 1)
-                    }
+                if (arr[num].first == 0 || arr[num].first > cd + 1) {
+                    arr[num] = Triple(cd + 1, cn, command)
+                    queue.add(num to cd + 1)
                 }
             }
 
             logic(cn * 2 % 10_000, 'D')
-            logic(if (cn - 1 < 0) 9999 else cn - 1, 'S')
+            logic(if (cn == 0) 9999 else cn - 1, 'S')
             logic(cn % 1000 * 10 + cn / 1000, 'L')
-            logic(cn  / 10 + cn % 10 * 1000, 'R')
+            logic(cn / 10 + cn % 10 * 1000, 'R')
         }
 
         val temp = StringBuilder()
         var cNum = b
 
-        repeat (arr[cNum].first) {
-            val (cd, prev, command) = arr[cNum]
+        repeat(arr[cNum].first) {
+            val (_, prev, command) = arr[cNum]
             temp.append(command)
             cNum = prev
         }
