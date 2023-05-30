@@ -15,3 +15,5 @@
 ### 5. [MITM(Meet In The Middle)](https://github.com/pnlkc/CodingTest/blob/main/example/MEET_IN_THE_MIDDLE.kt)
 
 ### 6. [다익스트라(ijkstra)](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC.kt)
+
+### 6. [투 포인터(Two Pointer)](https://github.com/pnlkc/CodingTest/blob/main/example/Two_Pointer.kt)
