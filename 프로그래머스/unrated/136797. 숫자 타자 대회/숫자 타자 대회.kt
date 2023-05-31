@@ -8,7 +8,6 @@ class Solution {
         var mapOne = mutableMapOf("4 6" to 0)
         val mapTwo = mutableMapOf<String, Int>()
         var list = listOf("4 6")
-        dist.forEach { println(it.toList()) }
 
         for (n in numbers) {
             for (c in list) {

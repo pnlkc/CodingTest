@@ -1,10 +1,10 @@
 # [unrated] 숫자 타자 대회 - 136797 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/136797) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/136797?language=kotlin) 
 
 ### 성능 요약
 
-메모리: 381 MB, 시간: 889.65 ms
+메모리: 388 MB, 시간: 1074.83 ms
 
 ### 구분
 
@@ -12,7 +12,7 @@
 
 ### 채점결과
 
-<br/>정확성: 100.0<br/>합계: 100.0 / 100.0
+Empty
 
 ### 문제 설명
 
