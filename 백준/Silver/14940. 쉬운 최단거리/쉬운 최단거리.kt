@@ -1,10 +1,11 @@
 import java.util.LinkedList
 
 fun main() {
+    val sb = StringBuilder()
     val (n, m) = readln().split(' ').map(String::toInt)
     val graph = Array(n) { listOf<Int>() }
-    val dist = Array(n) { IntArray(m) { -1 } }
     var target = intArrayOf(-1, -1)
+    val dist = Array(n) { IntArray(m) { -1 } }
     val queue = LinkedList<Pair<Int, Int>>()
 
     repeat(n) {
@@ -38,5 +39,6 @@ fun main() {
         }
     }
 
-    dist.forEach { println(it.joinToString(" ")) }
+    dist.forEach { sb.appendLine(it.joinToString(" ")) }
+    println(sb)
 }
