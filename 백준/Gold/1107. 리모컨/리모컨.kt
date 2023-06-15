@@ -4,7 +4,7 @@ fun main() {
     val n = readln().toInt()
     val m = readln().toInt()
 
-    val rN = if(m == 0) listOf<Char>() else readln().split(' ').map { it[0] }
+    val rN = if(m == 0) listOf() else readln().split(' ').map { it[0] }
     var num = 0
     var length = Int.MAX_VALUE
 
@@ -12,7 +12,7 @@ fun main() {
         val minus = (n - i).toString()
         val plus = (n + i).toString()
         val result = booleanArrayOf(check(minus, rN), check(plus, rN))
-        
+
         if (result.contains(true)) {
             num = i
             if (result[0]) length = minus.length
@@ -21,10 +21,10 @@ fun main() {
         }
     }
 
-    println(minOf(abs(n.toInt() - 100), num + length))
+    println(minOf(abs(n - 100), num + length))
 }
 
-fun check(s: String, list: List<Char>): Boolean {
-    s.forEach { if(list.contains(it)) return false }
+fun check(s: String, l: List<Char>): Boolean {
+    s.forEach { if(l.contains(it)) return false }
     return true
 }
