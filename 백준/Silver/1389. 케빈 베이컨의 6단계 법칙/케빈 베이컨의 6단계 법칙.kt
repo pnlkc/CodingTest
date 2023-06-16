@@ -25,12 +25,13 @@ fun main() {
         }
     }
 
-    println(
-        dist
-            .map { it.sum() }
-            .withIndex()
-            .sortedWith(compareBy<IndexedValue<Int>> { it.value }.thenBy { it.index })
-            .first()
-            .index + 1
-    )
+    var minToIndex = Int.MAX_VALUE to -1
+    
+    dist.forEachIndexed { i, ints ->
+        ints.sum().run {
+            if (this < minToIndex.first) minToIndex = this to i + 1
+        }
+    }
+    
+    println(minToIndex.second)
 }
