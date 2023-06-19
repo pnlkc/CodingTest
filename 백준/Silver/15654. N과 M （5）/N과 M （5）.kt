@@ -12,9 +12,9 @@ fun calc(list: List<Int>, mList: MutableList<String>, used: MutableList<Int>, m:
     } else if (used.size < m) {
         for (i in list.indices) {
             if (!used.contains(i)) {
-                val temp = used.toMutableList()
-                temp.add(i)
-                calc(list, mList, temp, m)
+                used.add(i)
+                calc(list, mList, used, m)
+                used.removeLast()
             }
         }
     }
