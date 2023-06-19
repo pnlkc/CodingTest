@@ -1,9 +1,11 @@
 fun main() {
+    val sb = StringBuilder()
     val (n, m) = readln().split(' ').map(String::toInt)
     val mList = mutableListOf<String>()
     val list = readln().split(' ').map(String::toInt).sorted()
     calc(list, mList, mutableListOf(), m)
-    mList.forEach { println(it) }
+    mList.forEach { sb.appendLine(it) }
+    println(sb)
 }
 
 fun calc(list: List<Int>, mList: MutableList<String>, used: MutableList<Int>, m: Int) {
