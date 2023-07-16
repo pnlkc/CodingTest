@@ -8,7 +8,8 @@ fun main() {
         val sqrt = Math.sqrt(k.toDouble()).toInt()
         for (i in 1..sqrt) {
             for (j in sqrt..k) {
-                if (i * j == k) count++
+                if (i * j == k) count++ 
+                else if (i * j > k) break
             }
         }
     }
