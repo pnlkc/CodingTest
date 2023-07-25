@@ -22,12 +22,7 @@ public class Main {
 		visit[0][0] = true;
 		visit[0][1] = true;
 		
-		calc(
-			Arrays.stream(visit).map(boolean[]::clone).toArray(boolean[][]::new),
-			0, 
-			1, 
-			0
-		);
+		calc(visit, 0, 1, 0);
 		
 		System.out.println(cnt);
 	}
