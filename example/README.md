@@ -29,3 +29,9 @@
 ### 12. [동적 프로그래밍 (Dynamic Programming)](https://velog.io/@pnlkc/Dynamic-Programming)
 
 ### 13. [누적합 (Prefix Sum)](https://velog.io/@pnlkc/%EB%88%84%EC%A0%81%ED%95%A9)
+
+### 14. [그리디 (Greedy)](https://velog.io/@pnlkc/%EA%B7%B8%EB%A6%AC%EB%94%94)
+
+### 15. [이진 탐색 (Binary Search)](https://velog.io/@pnlkc/%EC%9D%B4%EC%A7%84-%ED%83%90%EC%83%89)
+
+### 16. [깊이 우선 탐색 (DFS), 너비 우선 탐색 (BFS)](https://velog.io/@pnlkc/DFS-BFS)
