@@ -34,7 +34,7 @@ class Union_Find(n: Int) {
     }
 
     // 두 집합이 같은 집합에 속해 있는지 확인하는 메소드입니다 (필요에 따라 구현해 사용하시면 됩니다)
-    fun connected(node1: Int, node2: Int): Boolean {
+    fun isConnected(node1: Int, node2: Int): Boolean {
         return find(node1) == find(node2)
     }
 }
