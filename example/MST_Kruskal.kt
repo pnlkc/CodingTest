@@ -22,7 +22,7 @@ import java.util.PriorityQueue
  */
 
 class MST_Kruskal {
-    fun main() {
+    fun kruskal() {
         val (v, e) = readln().split(" ").map(String::toInt)
         val pq = PriorityQueue<IntArray> { arr1, arr2 -> arr1[2] - arr2[2] } // 간선의 가중치를 기준으로 오름차순 정렬합니다
 
