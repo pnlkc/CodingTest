@@ -23,3 +23,9 @@
 ### 9. [벨만 포드(Bellman Ford)](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%B2%A8%EB%A7%8C%20%ED%8F%AC%EB%93%9C.kt)
 
 ### 10. [유니온 파인드(Union Find)](https://github.com/pnlkc/CodingTest/blob/main/example/Union_Find.kt)
+
+### 11. [백트래킹 (Backtracking)](https://velog.io/@pnlkc/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9)
+
+### 12. [동적 프로그래밍 (Dynamic Programming)](https://velog.io/@pnlkc/Dynamic-Programming)
+
+### 13. [누적합 (Prefix Sum)](https://velog.io/@pnlkc/%EB%88%84%EC%A0%81%ED%95%A9)
