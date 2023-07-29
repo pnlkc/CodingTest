@@ -1,7 +1,7 @@
 // 유니온 파인드 알고리즘은 서로소 집합이라고도 부르며,
 // 노드를 서로 같은 집합으로 묶거나 (유니온)
 // 노드가 서로 같은 집합에 있는지 확인하는 (파인드) 알고리즘
-class UnionFind(n: Int) {
+class Union_Find(n: Int) {
     private val parent = IntArray(n) { it } // 부모 배열은 생성시 자기 자신을 가르키도록 선언
     private val rank = IntArray(n)
 
