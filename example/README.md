@@ -22,4 +22,4 @@
 
 ### 9. [벨만 포드(Bellman Ford)](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%B2%A8%EB%A7%8C%20%ED%8F%AC%EB%93%9C.kt)
 
-### 10. [유니온 파인드(Union Find)](https://github.com/pnlkc/CodingTest/blob/main/example/UnionFind.kt)
+### 10. [유니온 파인드(Union Find)](https://github.com/pnlkc/CodingTest/blob/main/example/Union_Find.kt)
