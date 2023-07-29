@@ -37,3 +37,5 @@
 ### 16. [유니온 파인드(Union Find)](https://github.com/pnlkc/CodingTest/blob/main/example/Union_Find.kt)
 
 ### 17. [MST - 크루스칼(Kruskal)](https://github.com/pnlkc/CodingTest/blob/main/example/MST_Kruskal.kt)
+
+### 18. [MST - 프림(Prim)](https://github.com/pnlkc/CodingTest/blob/main/example/MST_Prim.kt)
