@@ -1,5 +1,3 @@
-package com.example.notepad
-
 import kotlin.math.abs
 
 fun main() {
@@ -18,11 +16,7 @@ fun main() {
             answer = intArrayOf(arr[l], arr[r])
         }
 
-        if (arr[l] + arr[r] < 0) {
-            if (l + 1 == r) break else l++
-        } else {
-            if (r - 1 == l) break else r--
-        }
+        if (arr[l] + arr[r] < 0) l++ else r--
     }
 
     println("${answer[0]} ${answer[1]}")
