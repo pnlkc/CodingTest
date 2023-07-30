@@ -1,3 +1,7 @@
+package com.example.notepad
+
+import kotlin.system.exitProcess
+
 fun main() {
     val board = Array(9) { IntArray(9) }
     val zeroList = mutableListOf<Pair<Int, Int>>()
@@ -16,7 +20,7 @@ fun bt(idx: Int, zeroList: MutableList<Pair<Int, Int>>, board: Array<IntArray>):
     if (idx == zeroList.size) {
         // 스도쿠 완성시 출력 후 true를 리턴 하여 더 이상 탐색하지 않도록 설정
         board.forEach { println(it.joinToString("")) }
-        return true
+        exitProcess(0)
     } else {
         val (y, x) = zeroList[idx]
         val list = check(board, y, x) // 입력 가능한 숫자 리스트
