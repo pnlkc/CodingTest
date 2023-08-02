@@ -1,10 +1,15 @@
 fun main() {
     val num = readln().toInt()
-    val arr = readln().split(" ").map { intArrayOf(it.toInt(), 1) }
+    val arr = readln().split(" ").map { it.toInt() }
+    val memo = IntArray(num) { 1 }
+    var max = 1
 
     for (i in 1 until num) {
-        arr[i][1] += arr.filterIndexed { idx, ints -> idx < i && ints[0] < arr[i][0] }.maxOfOrNull { it[1] } ?: 0
+        for (j in 0 until i) {
+            if (arr[i] > arr[j]) memo[i] = maxOf(memo[i], memo[j] + 1)
+        }
+        max = maxOf(max, memo[i])
     }
 
-    println(arr.maxOf { it[1] })
+    println(max)
 }
