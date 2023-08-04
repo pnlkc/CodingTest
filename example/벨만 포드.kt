@@ -25,15 +25,19 @@ class 벨만_포드 {
 
         // 노드의 갯수(n) - 1 만큼까지 경유할 수 있으므로 n - 1회 반복합니다.
         repeat(n - 1) {
+            var isChange = false // 
             // 1번부터 n번까지 모든 노드을 탐색해야 하므로 1..n을 범위로 합니다.
             for (i in 1..n) {
                 // 현재 노드를 경유했을 때 더 작아지는 경우가 있는지 현재 노드의 인접 노드들을 확인합니다.
                 for ((cn, cd) in graph[i]) {
                     if (dist[i] != Long.MAX_VALUE && dist[i] + cd < dist[cn]) {
                         dist[cn] = dist[i] + cd
+                        isChange = true
                     }
                 }
             }
+
+            if (!isChange) return true to dist;
         }
 
         //노드의 갯수(n) - 1 개를 경유한 후에도 계속 작아질 수 있다면 음수 사이클이 발생하는 경우입니다.
