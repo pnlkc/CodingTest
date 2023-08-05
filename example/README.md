@@ -39,3 +39,5 @@
 ### 17. [MST - 크루스칼(Kruskal)](https://github.com/pnlkc/CodingTest/blob/main/example/MST_Kruskal.kt)
 
 ### 18. [MST - 프림(Prim)](https://github.com/pnlkc/CodingTest/blob/main/example/MST_Prim.kt)
+
+### 19. [위상 정렬(Topological Sort)](https://github.com/pnlkc/CodingTest/blob/main/example/%EC%9C%84%EC%83%81%20%EC%A0%95%EB%A0%AC.java)
