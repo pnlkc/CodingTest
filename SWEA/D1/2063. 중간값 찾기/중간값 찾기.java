@@ -1,24 +1,39 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.StringTokenizer;
 
-class Solution {
+public class Solution {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int n = Integer.parseInt(br.readLine());
-		ArrayList<Integer> al = new ArrayList<Integer>();
+		int N = Integer.parseInt(br.readLine());
+		int[] arr = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		while (st.hasMoreTokens()) {
-			al.add(Integer.parseInt(st.nextToken()));
+		for (int i = 0; i < N; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Collections.sort(al);
+		selectionSort(0, arr);
 		
-		System.out.println(al.get(n / 2));
-		
+		System.out.println(arr[N / 2]);
+	}
+	
+	public static void selectionSort(int idx, int[] arr) {
+		if (idx == arr.length - 1) {
+			return;
+		} else {
+			int minIdx = idx;
+			for (int i = idx + 1; i < arr.length; i++) {
+				if (arr[minIdx] > arr[i]) {
+					minIdx = i;
+				}
+			}
+			int temp = arr[minIdx];
+			arr[minIdx] = arr[idx];
+			arr[idx] = temp;
+			
+			selectionSort(idx + 1, arr);
+		}
 	}
 }
