@@ -13,30 +13,26 @@ public class Main {
 
 		for (int i = 0; i < N; i++) {
 			int next = Integer.parseInt(st.nextToken());
-			if (next != num) {
-				if (!stack.isEmpty() && stack.peek() == num) {
-					while (!stack.isEmpty() && stack.peek() == num) {
-						stack.pop();
-						num++;
-					}
-				}
-				if (next != num) stack.push(next);
-			} else {
+			while (!stack.isEmpty() && stack.peek() == num) {
+				stack.pop();
 				num++;
-				if (!stack.isEmpty() && stack.peek() == num) {
-					while (!stack.isEmpty() && stack.peek() == num) {
-						stack.pop();
-						num++;
-					}
-				}
+			}
+
+			if (next != num)
+				stack.push(next);
+			else
+				num++;
+
+			while (!stack.isEmpty() && stack.peek() == num) {
+				stack.pop();
+				num++;
 			}
 		}
-		
+
 		if (stack.isEmpty()) {
 			System.out.println("Nice");
 		} else {
 			System.out.println("Sad");
 		}
-
 	}
 }
