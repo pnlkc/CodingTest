@@ -2,9 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
-class Solution
-{
+class Solution {
 	static int max = 0;
 
 	public static void main(String[] args) throws IOException {
@@ -17,8 +17,8 @@ class Solution
 			int n = Integer.parseInt(input[0]);
 			int l = Integer.parseInt(input[1]);
 
-			ArrayList<Integer> tL = new ArrayList<>();
-			ArrayList<Integer> cL = new ArrayList<>();
+			List<Integer> tL = new ArrayList<>();
+			List<Integer> cL = new ArrayList<>();
 
 			for (int i = 0; i < n; i++) {
 				String[] inputI = br.readLine().split(" ");
@@ -32,13 +32,17 @@ class Solution
 		}
 	}
 
-	public static void calc(int i, int n, int l, int sumT, int sumC, ArrayList<Integer> tL, ArrayList<Integer> cL) {
+	public static void calc(int i, int n, int l, int sumT, int sumC, List<Integer> tL, List<Integer> cL) {
 		if (i == n) {
-			if (sumC <= l && max < sumT) max = sumT;
+			if (max < sumT) {
+				max = sumT;
+			}
 			return;
 		}
 
-		if (l >= sumC + cL.get(i)) calc(i + 1, n, l, sumT + tL.get(i), sumC + cL.get(i), tL, cL);
+		if (l >= sumC + cL.get(i)) {
+			calc(i + 1, n, l, sumT + tL.get(i), sumC + cL.get(i), tL, cL);
+		}
 		calc(i + 1, n, l, sumT, sumC, tL, cL);
 	}
 }
