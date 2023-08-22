@@ -121,7 +121,7 @@ public class Main {
 			if (v == num - 2) break;
 		}
 
-		System.out.println(v != num - 2 || r == 0 ? -1 : r);
+		System.out.println(v != num - 2 ? -1 : r);
 	}
 	
 	// 섬마다 번호 나누는 bfs
