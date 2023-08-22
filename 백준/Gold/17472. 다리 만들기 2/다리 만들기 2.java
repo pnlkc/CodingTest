@@ -91,7 +91,7 @@ public class Main {
 							}
 
 							
-							if (map[ny][nx] == 0 || map[ny][nx] == n) {
+							if (map[ny][nx] == n) {
 								continue;
 							}
 							
