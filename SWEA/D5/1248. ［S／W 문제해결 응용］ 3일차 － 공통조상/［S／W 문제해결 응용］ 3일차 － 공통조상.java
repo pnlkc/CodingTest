@@ -2,10 +2,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
@@ -40,11 +38,6 @@ class Node {
 
 		return null; // 찾는 노드가 없는 경우
 	}
-
-	@Override
-	public String toString() {
-		return "Node [parent=" + parent + ", value=" + value + ", left=" + left + ", right=" + right + "]";
-	}
 }
 
 public class Solution {
@@ -60,7 +53,6 @@ public class Solution {
 			int E = Integer.parseInt(st1.nextToken());
 			int A = Integer.parseInt(st1.nextToken());
 			int B = Integer.parseInt(st1.nextToken());
-			Map<Integer, List<Integer>> graph = new HashMap<>();
 			Node[] nodeList = new Node[V + 1];
 			Node tree = new Node(0, 1);
 			nodeList[1] = tree;
