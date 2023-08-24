@@ -86,6 +86,7 @@ public class Main {
 			}
 		}
 		
+		int cnt = M;
 		for (int t = 1; t <= 1000; t++) {
 			int[][] tMap = new int[N][N];
 			Map<Integer, Pos> tSharkList = new HashMap<>();
@@ -114,6 +115,8 @@ public class Main {
 					}
 
 					if (tMap[ny][nx] != 0) {
+						cnt--;
+						
 						if (tMap[ny][nx] > key) {
 							tSharkList.remove(tMap[ny][nx]);
 							tMap[ny][nx] = key;
@@ -161,15 +164,8 @@ public class Main {
 				smell[shark.y][shark.x] = new Smell(key, K);
 			}
 
-			int cnt = 0;
-			for (int i = 0; i < N; i++) {
-				for (int j = 0; j < N; j++) {
-					if (tMap[i][j] != 0) {
-						cnt++;
-					}
-				}
-			}
-			if (cnt == 1) {
+			// 상어가 한마리만 남는 경우
+			if (cnt == 1) { 
 				System.out.println(t);
 				return;
 			}
