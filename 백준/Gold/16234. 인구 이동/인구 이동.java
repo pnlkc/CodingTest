@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -12,11 +11,6 @@ class Pos {
 	public Pos(int y, int x) {
 		this.x = x;
 		this.y = y;
-	}
-
-	@Override
-	public String toString() {
-		return "Pos [x=" + x + ", y=" + y + "]";
 	}
 }
 
@@ -30,8 +24,8 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st1 = new StringTokenizer(br.readLine());
 		N = Integer.parseInt(st1.nextToken()); // 맵 크기
-		L = Integer.parseInt(st1.nextToken()); // 최소 필요 차이
-		R = Integer.parseInt(st1.nextToken()); // 최대 가능 차이
+		L = Integer.parseInt(st1.nextToken()); // 최소 필요 인구 차이
+		R = Integer.parseInt(st1.nextToken()); // 최대 가능 인구 차이
 		map = new int[N][N];
 		
 		// 지도 초기화
@@ -45,7 +39,7 @@ public class Main {
 		
 		// 인구 이동
 		int day = 0;
-		boolean isChange = true;
+		boolean isChange = true; // 인구 이동 확인용 변수
 		
 		while (isChange) { // 인구 이동이 있는 동안 반복
 			isChange = false;
@@ -54,8 +48,8 @@ public class Main {
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 					if (!isVisit[i][j]) {
-						if (bfs(j, i, isVisit)) {
-							isChange = true;
+						if (bfs(j, i, isVisit)) { // 인구 이동이 있는 경우
+							isChange = true; // 변경이 있었다고 설정
 						}
 					}
 				}
