@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
@@ -31,7 +30,7 @@ public class Main {
 			cnt[B]++;
 		}
 		
-		// 위상 정렬 알고리즘 (Queue 대신 PriorityQueue를 사용하여 가장 쉬운 문제 부터 풀도록 구현)
+		// 위상 정렬 알고리즘 (Queue 대신 PriorityQueue를 사용하여 가장 쉬운 문제부터 풀도록 구현)
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
 		
 		for (int i = 1; i <= N; i++) {
