@@ -4,7 +4,7 @@
 <br>
 
 ## 알고리즘 리스트
-### 1. 백트래킹(Backtracking) [Kotlin](https://velog.io/@pnlkc/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9) / [Java]()
+### 1. 백트래킹(Backtracking) - [Kotlin](https://velog.io/@pnlkc/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9) / [Java]()
 
 ### 2. [동적 프로그래밍(DP, Dynamic Programming)](https://velog.io/@pnlkc/Dynamic-Programming)
 
@@ -28,7 +28,7 @@
 
 ### 12. [깊이 우선 탐색(DFS), 너비 우선 탐색(BFS)](https://velog.io/@pnlkc/DFS-BFS)
 
-### 13. 다익스트라(Dijkstra) [Kotlin](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC.kt) / [Java](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC.java)
+### 13. 다익스트라(Dijkstra) - [Kotlin](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC.kt) / [Java](https://github.com/pnlkc/CodingTest/blob/main/example/%EB%8B%A4%EC%9D%B5%EC%8A%A4%ED%8A%B8%EB%9D%BC.java)
 
 ### 14. [플로이드 와샬(Floyd Warshall)](https://github.com/pnlkc/CodingTest/blob/main/example/%ED%94%8C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EC%99%80%EC%83%AC.kt)  
 
