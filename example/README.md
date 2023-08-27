@@ -4,7 +4,7 @@
 <br>
 
 ## 알고리즘 리스트
-### 1. 백트래킹(Backtracking) - [Kotlin](https://velog.io/@pnlkc/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9) / [Java](https://github.com/pnlkc/CodingTest/blob/main/example/Backtracking.java)
+### 1. [백트래킹(Backtracking)](https://velog.io/@pnlkc/%EB%B0%B1%ED%8A%B8%EB%9E%98%ED%82%B9)
 
 ### 2. [동적 프로그래밍(DP, Dynamic Programming)](https://velog.io/@pnlkc/Dynamic-Programming)
 
