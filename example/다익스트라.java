@@ -17,7 +17,7 @@ public class Dijkstra {
 		int[] dist = new int[v + 1]; // 노드의 최소 거리를 담을 배열
 		Arrays.fill(dist, Integer.MAX_VALUE);
 //		Arrays.fill(dist, -1);
-		boolean[] isVisit = new boolean[v + 1]; // 방문 여부 체크
+		boolean[] isVisit = new boolean[v + 1]; // 방문 여부 체크를 위한 배열
 		
 		// Comparator 람다식 사용
 		PriorityQueue<ND> pq = new PriorityQueue<>((ND o1, ND o2) -> o1.d - o2.d);
