@@ -39,40 +39,10 @@ public class Main {
 			if (num == prevA) {
 				cnt += prevR;
 			} else {
-				int findNum = S - num;
-				int count = 0;
-				int s = 0;
-				int e = bL.size() - 1;
-
-				while (s <= e) {
-					int m = (s + e) / 2;
-					
-					if (bL.get(m) < findNum) {
-						s = m + 1;
-					} else if (bL.get(m) > findNum) {
-						e = m - 1;
-					} else {
-						count++;
-						
-						int lm = m - 1;
-						while (lm >= 0 && bL.get(lm) == findNum) {
-							count++;
-							lm--;
-						}
-						
-						int rm = m + 1;
-						while (rm < bL.size() && bL.get(rm) == findNum) {
-							count++;
-							rm++;
-						}
-						
-						break;
-					}
-				}
-				
-				cnt += count;
+				int r = findCnt(S - num, bL);
+				cnt += r;
 				prevA = num;
-				prevR = count;
+				prevR = r;
 			}
 		}
 
@@ -87,5 +57,39 @@ public class Main {
 
 		calc(s + 1, e, num, list);
 		calc(s + 1, e, num + arr[s], list);
+	}
+
+	public static int findCnt(int num, List<Integer> list) {
+		int cnt = 0;
+		int s = 0;
+		int e = list.size() - 1;
+
+		while (s <= e) {
+			int m = (s + e) / 2;
+			
+			if (list.get(m) < num) {
+				s = m + 1;
+			} else if (list.get(m) > num) {
+				e = m - 1;
+			} else {
+				cnt++;
+				
+				int lm = m - 1;
+				while (lm >= 0 && list.get(lm) == num) {
+					cnt++;
+					lm--;
+				}
+				
+				int rm = m + 1;
+				while (rm < list.size() && list.get(rm) == num) {
+					cnt++;
+					rm++;
+				}
+				
+				break;
+			}
+		}
+
+		return cnt;
 	}
 }
