@@ -25,13 +25,7 @@ class V implements Comparable<V> {
 
 	@Override
 	public int compareTo(V o) {
-		if (d < o.d) {
-			return -1;
-		} else if (d > o.d) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return Double.compare(d, o.d);
 	}
 }
 
