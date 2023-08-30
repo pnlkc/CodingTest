@@ -17,6 +17,7 @@ public class Solution {
 	static int[][] map, dist;
 	static Pos firm, home;
 	static Pos[] pos;
+	static int count = 0;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -60,18 +61,19 @@ public class Solution {
 				int xDiff = Math.abs(pos[i].x - firm.x);
                 int yDiff = Math.abs(pos[i].y - firm.y);
                 
-				min = Math.min(min, calc(i, (1 << i), 1, xDiff + yDiff));
+				min = Math.min(min, xDiff + yDiff + calc(i, (1 << i)));
 			}
 			
 			System.out.println("#" + tc + " " + min);
 		}
 	}
 
-	public static int calc(int num, int isVisit, int cnt, int sum) {
-		if (cnt == N) {
+	public static int calc(int num, int isVisit) {
+		if (isVisit == (1 << N) - 1) {
 			int xDiff = Math.abs(pos[num].x - home.x);
             int yDiff = Math.abs(pos[num].y - home.y);
-			return sum + xDiff + yDiff;
+            
+			return xDiff + yDiff;
 		} else {
 			if (dist[isVisit][num] != 0) {
 				return dist[isVisit][num];
@@ -79,7 +81,7 @@ public class Solution {
 
 			for (int next = 0; next < N; next++) {
 				if ((isVisit & (1 << next)) == 0 && map[num][next] != 0) {
-					int r = calc(next, (isVisit | (1 << next)), cnt + 1, sum + dist[num][next]);
+					int r = calc(next, (isVisit | (1 << next)));
 					
 					if (dist[isVisit][num] == 0 || dist[isVisit][num] > r + map[num][next]) {
 						dist[isVisit][num] = r + map[num][next];
