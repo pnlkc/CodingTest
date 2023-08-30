@@ -1,5 +1,7 @@
 # example
 여러 알고리즘들의 샘플 코드(Kotlin, Java)를 정리하였습니다.
+
+Java는 Java 8을 사용했습니다.
 <br>
 <br>
 
