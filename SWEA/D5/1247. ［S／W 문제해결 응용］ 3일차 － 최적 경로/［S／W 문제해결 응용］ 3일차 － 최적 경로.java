@@ -3,78 +3,91 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class P {
+class Pos {
 	int x, y;
 
-	public P(int x, int y) {
+	public Pos(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 }
 
 public class Solution {
-	static int[] pick;
-	static int[][] dist;
-	static int min;
+	static int N, min;
+	static int[][] map, dist;
+	static Pos firm, home;
+	static Pos[] pos;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
-
+		
 		for (int tc = 1; tc <= T; tc++) {
-			int N = Integer.parseInt(br.readLine());
-			P[] arr = new P[N + 2];
-			pick = new int[N];
+			N = Integer.parseInt(br.readLine());
+			map = new int[N][N];
 			min = Integer.MAX_VALUE;
-			dist = new int[N + 2][N + 2];
 			StringTokenizer st = new StringTokenizer(br.readLine());
-
-			for (int i = 0; i < N + 2; i++) {
+			
+			int fx = Integer.parseInt(st.nextToken());
+			int fy = Integer.parseInt(st.nextToken());
+			int hx = Integer.parseInt(st.nextToken());
+			int hy = Integer.parseInt(st.nextToken());
+			firm = new Pos(fx, fy);
+			home = new Pos(hx, hy);
+			
+			pos = new Pos[N];
+			
+			for (int i = 0; i < N; i++) {
 				int x = Integer.parseInt(st.nextToken());
 				int y = Integer.parseInt(st.nextToken());
-
-				arr[i] = new P(x, y);
+				
+				pos[i] = new Pos(x, y);
 			}
-
-			for (int i = 0; i < N + 2; i++) {
-				for (int j = 0; j < N + 2; j++) {
-					int xDiff = Math.abs(arr[i].x - arr[j].x);
-					int yDiff = Math.abs(arr[i].y - arr[j].y);
-
-					dist[i][j] = xDiff + yDiff;
+			
+			// 그래프 생성
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+					int xDiff = Math.abs(pos[i].x - pos[j].x);
+                    int yDiff = Math.abs(pos[i].y - pos[j].y);
+					
+					map[i][j] = xDiff + yDiff;
 				}
 			}
-
-			pick(N, 0, 0);
-
+			
+			for (int i = 0; i < N; i++) {
+				dist = new int[(1 << N) - 1][N];
+				
+				int xDiff = Math.abs(pos[i].x - firm.x);
+                int yDiff = Math.abs(pos[i].y - firm.y);
+                
+				min = Math.min(min, calc(i, (1 << i), 1, xDiff + yDiff));
+			}
+			
 			System.out.println("#" + tc + " " + min);
 		}
 	}
 
-	public static void pick(int N, int depth, int sum) {
-		if (sum > min) return;
-		
-		if (depth == N) {
-			min = Math.min(min, sum + dist[pick[N - 1]][1]);
+	public static int calc(int num, int isVisit, int cnt, int sum) {
+		if (cnt == N) {
+			int xDiff = Math.abs(pos[num].x - home.x);
+            int yDiff = Math.abs(pos[num].y - home.y);
+			return sum + xDiff + yDiff;
 		} else {
-			p: for (int i = 2; i < N + 2; i++) {
-				for (int j = 0; j < N; j++) {
-					if (pick[j] == i) {
-						continue p;
+			if (dist[isVisit][num] != 0) {
+				return dist[isVisit][num];
+			}
+
+			for (int next = 0; next < N; next++) {
+				if ((isVisit & (1 << next)) == 0 && map[num][next] != 0) {
+					int r = calc(next, (isVisit | (1 << next)), cnt + 1, sum + dist[num][next]);
+					
+					if (dist[isVisit][num] == 0 || dist[isVisit][num] > r + map[num][next]) {
+						dist[isVisit][num] = r + map[num][next];
 					}
 				}
-				
-				int newSum = sum;
-				if (depth == 0) {
-					newSum += dist[0][i];
-				} else {
-					newSum += dist[pick[depth - 1]][i];
-				}
-				
-				pick[depth] = i;
-				pick(N, depth + 1, newSum);
-				pick[depth] = 0;
 			}
 		}
+			
+		return dist[isVisit][num];	
 	}
 }
