@@ -47,3 +47,5 @@ Java는 Java 8을 사용했습니다.
 ### 20. 트라이(Trie) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/Trie.java)
 
 ### 21. 외판원 순회(TSP) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/TSP.java)
+
+### 22. 비트마스킹(Bit Masking) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/BitMasking.md)
