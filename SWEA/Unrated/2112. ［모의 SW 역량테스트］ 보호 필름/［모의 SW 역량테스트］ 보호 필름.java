@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -48,10 +47,13 @@ public class Solution {
 	// 바꿀 행 구하는 메소드
 	public static void pick(int[] pick, int idx, int cnt, int num) {
 		if (cnt == num) {
-			if (convert(pick)) {
+			int[] convert = new int[D];
+			
+			if (convert(pick, convert, 0, pick.length)) {
 				result = num;
 				isEnd = true;
 			}
+			
 			return;
 		}
 		
@@ -61,19 +63,7 @@ public class Solution {
 		}
 	}
 	
-	// 해당 행을 0, 1 중 어떤걸로 바꿀지 정하는 메소드1
-	public static boolean convert(int[] pick) {
-		int[] convert = new int[D];
-		Arrays.fill(convert, -1);
-		
-		if (convert(pick, convert, 0, pick.length)) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	// 해당 행을 0, 1 중 어떤걸로 바꿀지 정하는 메소드2
+	// 해당 행을 0, 1 중 어떤걸로 바꿀지 정하는 메소드
 	public static boolean convert(int[] pick, int[] convert, int idx, int n) {
 		if (idx == n) {
 			if (check(pick, convert)) {
