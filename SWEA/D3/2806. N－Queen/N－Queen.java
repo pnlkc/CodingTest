@@ -40,11 +40,16 @@ public class Solution {
 		arr[y][x] += num;
 
 		for (int j = 1; j < N; j++) {
+			int ny = y + j;
+
+			if (ny < 0 || ny >= N) {
+				continue;
+			}
+			
 			for (int d = 0; d < 3; d++) {
 				int nx = x + dx[d] * j;
-				int ny = y + j;
 
-				if (nx < 0 || ny < 0 || nx >= N || ny >= N) {
+				if (nx < 0 || nx >= N) {
 					continue;
 				}
 
