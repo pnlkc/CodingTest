@@ -50,4 +50,4 @@ Java는 Java 8을 사용했습니다.
 
 ### 22. 비트마스킹(Bit Masking) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/BitMasking.md)
 
-### 23. 다음 순열(Next Permutation) - [Java]()
+### 23. 다음 순열(Next Permutation) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/NextPermutation.java)
