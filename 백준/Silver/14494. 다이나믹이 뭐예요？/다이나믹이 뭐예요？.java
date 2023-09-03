@@ -10,26 +10,22 @@ public class Main {
 		final int NUM = 1_000_000_007;
 		int n = Integer.parseInt(st.nextToken());
 		int m = Integer.parseInt(st.nextToken());
-		int[] dx = { 1, 1, 0 };
-		int[] dy = { 0, 1, 1 };
-		int[][] dp = new int[n][m];
-		dp[0][0] = 1;
-		
+		long[][] dp = new long[n][m];
+
 		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				for (int d = 0; d < 3; d++) {
-					int nx = j + dx[d];
-					int ny = i + dy[d];
-					
-					if (nx < 0 || nx >= m || ny < 0 || ny >= n) {
-						continue;
-					}
-					
-					dp[ny][nx] = (dp[ny][nx] + dp[i][j]) % NUM;
-				}
+			dp[i][0] = 1L;
+		}
+
+		for (int i = 0; i < m; i++) {
+			dp[0][i] = 1L;
+		}
+
+		for (int i = 1; i < n; i++) {
+			for (int j = 1; j < m; j++) {
+				dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j] + dp[i][j - 1]) % NUM;
 			}
 		}
-		
+
 		System.out.println(dp[n - 1][m - 1]);
 	}
 }
