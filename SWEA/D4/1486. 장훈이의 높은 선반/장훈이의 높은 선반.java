@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 public class Solution {
 	static int N, B, min;
 	static int[] arr;
-	
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
@@ -18,30 +18,29 @@ public class Solution {
 			arr = new int[N];
 			StringTokenizer st2 = new StringTokenizer(br.readLine());
 			min = Integer.MAX_VALUE;
-			
+
 			for (int i = 0; i < N; i++) {
 				arr[i] = Integer.parseInt(st2.nextToken());
 			}
-			
-			for (int i = 1; i <= N; i++) {
-				calc(0, 0, i, 0);
-			}
-			
+
+			calc(0, 0, N, 0);
+
 			System.out.println("#" + tc + " " + (min - B));
 		}
 	}
-	
-	public static void calc(int idx, int cnt, int target, int sum) {
-        if (min <= sum) return;
-        
-		if (cnt == target) {
-			if (B <= sum) {
-				min = Math.min(min, sum);
-			}
 
+	public static void calc(int idx, int cnt, int target, int sum) {
+		if (min <= sum)
+			return;
+		
+		if (B <= sum) {
+			min = Math.min(min, sum);
+		}
+
+		if (cnt == target) {
 			return;
 		}
-		
+
 		for (int i = idx; i < N; i++) {
 			calc(i + 1, cnt + 1, target, sum + arr[i]);
 		}
