@@ -24,15 +24,14 @@ public class Solution {
 			}
 			
 			for (int i = 1; i <= N; i++) {
-				int[] pick = new int[i];
-				calc(pick, 0, 0, i, 0);
+				calc(0, 0, i, 0);
 			}
 			
 			System.out.println("#" + tc + " " + (min - B));
 		}
 	}
 	
-	public static void calc(int[] pick, int idx, int cnt, int target, int sum) {
+	public static void calc(int idx, int cnt, int target, int sum) {
         if (min <= sum) return;
         
 		if (cnt == target) {
@@ -44,8 +43,7 @@ public class Solution {
 		}
 		
 		for (int i = idx; i < N; i++) {
-			pick[cnt] = i;
-			calc(pick, i + 1, cnt + 1, target, sum + arr[i]);
+			calc(i + 1, cnt + 1, target, sum + arr[i]);
 		}
 	}
 }
