@@ -1,15 +1,14 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 import java.util.StringTokenizer;
 
 public class Solution {
 	static int[] dx = { 1, -1, -1, 1 };
 	static int[] dy = { 1, 1, -1, -1 };
 	static int[][] map;
-	static List<Integer> pick;
+	static Stack<Integer> pick;
 	static int N, max;
 
 	public static void main(String[] args) throws IOException {
@@ -19,7 +18,7 @@ public class Solution {
 		for (int tc = 1; tc <= T; tc++) {
 			N = Integer.parseInt(br.readLine());
 			map = new int[N][N];
-			pick = new ArrayList<>();
+			pick = new Stack<>();
 			max = -1;
 
 			// 지도 생성
@@ -33,9 +32,9 @@ public class Solution {
 
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
-					pick.add(map[i][j]);
+					pick.push(map[i][j]);
 					calc(j, i, j, i, 0);
-					pick.remove(pick.size() - 1);
+					pick.pop();
 				}
 			}
 			
@@ -51,9 +50,9 @@ public class Solution {
 			if (sx == nx && sy == ny) {
 				max = Math.max(max, pick.size());
 			} else if (!pick.contains(map[ny][nx])) {
-				pick.add(map[ny][nx]);
+				pick.push(map[ny][nx]);
 				calc(nx, ny, sx, sy, dir);
-				pick.remove(pick.size() - 1);
+				pick.pop();
 			}
 		}
 		
@@ -67,9 +66,9 @@ public class Solution {
 				if (sx == nx && sy == ny) {
 					max = Math.max(max, pick.size());
 				} else if (!pick.contains(map[ny][nx])) {
-					pick.add(map[ny][nx]);
+					pick.push(map[ny][nx]);
 					calc(nx, ny, sx, sy, newDir);
-					pick.remove(pick.size() - 1);
+					pick.pop();
 				}
 			}
 		}
