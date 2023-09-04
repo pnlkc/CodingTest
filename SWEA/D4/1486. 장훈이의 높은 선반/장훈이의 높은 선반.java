@@ -33,6 +33,8 @@ public class Solution {
 	}
 	
 	public static void calc(int[] pick, int idx, int cnt, int target, int sum) {
+        if (min <= sum) return;
+        
 		if (cnt == target) {
 			if (B <= sum) {
 				min = Math.min(min, sum);
