@@ -1,14 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Solution {
 	static int[] dx = { 1, -1, -1, 1 };
 	static int[] dy = { 1, 1, -1, -1 };
 	static int[][] map;
-	static Stack<Integer> pick;
+	static List<Integer> pick;
 	static int N, max;
 	static boolean[] hasNum;
 
@@ -19,7 +20,7 @@ public class Solution {
 		for (int tc = 1; tc <= T; tc++) {
 			N = Integer.parseInt(br.readLine());
 			map = new int[N][N];
-			pick = new Stack<>();
+			pick = new ArrayList<>();
 			max = -1;
 			hasNum = new boolean[101];
 
@@ -35,10 +36,10 @@ public class Solution {
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 					hasNum[map[i][j]] = true;
-					pick.push(map[i][j]);
+					pick.add(map[i][j]);
 					calc(j, i, j, i, 0);
 					hasNum[map[i][j]] = false;
-					pick.pop();
+					pick.remove(pick.size() - 1);
 				}
 			}
 			
@@ -55,10 +56,10 @@ public class Solution {
 				max = Math.max(max, pick.size());
 			} else if (!hasNum[map[ny][nx]]) {
 				hasNum[map[ny][nx]] = true;
-				pick.push(map[ny][nx]);
+				pick.add(map[ny][nx]);
 				calc(nx, ny, sx, sy, dir);
 				hasNum[map[ny][nx]] = false;
-				pick.pop();
+				pick.remove(pick.size() - 1);
 			}
 		}
 		
@@ -73,10 +74,10 @@ public class Solution {
 					max = Math.max(max, pick.size());
 				} else if (!hasNum[map[ny][nx]]) {
 					hasNum[map[ny][nx]] = true;
-					pick.push(map[ny][nx]);
+					pick.add(map[ny][nx]);
 					calc(nx, ny, sx, sy, newDir);
 					hasNum[map[ny][nx]] = false;
-					pick.pop();
+					pick.remove(pick.size() - 1);
 				}
 			}
 		}
