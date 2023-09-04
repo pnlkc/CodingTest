@@ -10,6 +10,7 @@ public class Solution {
 	static int[][] map;
 	static Stack<Integer> pick;
 	static int N, max;
+	static boolean[] hasNum;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,6 +21,7 @@ public class Solution {
 			map = new int[N][N];
 			pick = new Stack<>();
 			max = -1;
+			hasNum = new boolean[101];
 
 			// 지도 생성
 			for (int i = 0; i < N; i++) {
@@ -32,8 +34,10 @@ public class Solution {
 
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
+					hasNum[map[i][j]] = true;
 					pick.push(map[i][j]);
 					calc(j, i, j, i, 0);
+					hasNum[map[i][j]] = false;
 					pick.pop();
 				}
 			}
@@ -49,9 +53,11 @@ public class Solution {
 		if (nx >= 0 && nx < N && ny >= 0 && ny < N) {
 			if (sx == nx && sy == ny) {
 				max = Math.max(max, pick.size());
-			} else if (!pick.contains(map[ny][nx])) {
+			} else if (!hasNum[map[ny][nx]]) {
+				hasNum[map[ny][nx]] = true;
 				pick.push(map[ny][nx]);
 				calc(nx, ny, sx, sy, dir);
+				hasNum[map[ny][nx]] = false;
 				pick.pop();
 			}
 		}
@@ -65,9 +71,11 @@ public class Solution {
 			if (nx >= 0 && nx < N && ny >= 0 && ny < N) {
 				if (sx == nx && sy == ny) {
 					max = Math.max(max, pick.size());
-				} else if (!pick.contains(map[ny][nx])) {
+				} else if (!hasNum[map[ny][nx]]) {
+					hasNum[map[ny][nx]] = true;
 					pick.push(map[ny][nx]);
 					calc(nx, ny, sx, sy, newDir);
+					hasNum[map[ny][nx]] = false;
 					pick.pop();
 				}
 			}
