@@ -23,26 +23,23 @@ public class Solution {
 				arr[i] = Integer.parseInt(st2.nextToken());
 			}
 
-			calc(0, 0, N, 0);
+			calc(0, 0);
 
 			System.out.println("#" + tc + " " + (min - B));
 		}
 	}
 
-	public static void calc(int idx, int cnt, int target, int sum) {
+	public static void calc(int idx, int sum) {
 		if (min <= sum)
 			return;
 		
-		if (B <= sum) {
+		if (B <= sum)
 			min = Math.min(min, sum);
-		}
 
-		if (cnt == target) {
+		if (idx == N)
 			return;
-		}
 
-		for (int i = idx; i < N; i++) {
-			calc(i + 1, cnt + 1, target, sum + arr[i]);
-		}
+		calc(idx + 1, sum);
+		calc(idx + 1, sum + arr[idx]);
 	}
 }
