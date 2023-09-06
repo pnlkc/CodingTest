@@ -34,10 +34,15 @@ public class Main {
 				}
 			}
 			
+			if (set.size() != 2) {
+				sb.append(0).append("\n");
+				continue;
+			}
+			
 			List<Long> list = new ArrayList<>(set);
 			Collections.sort(list);
 			
-			if (list.size() == 2 && (list.get(0) * 2 == list.get(1))) {
+			if (list.get(0) * 2 == list.get(1)) {
 				sb.append(1).append("\n");
 			} else {
 				sb.append(0).append("\n");
