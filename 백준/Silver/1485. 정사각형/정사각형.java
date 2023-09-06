@@ -11,18 +11,15 @@ import java.util.stream.Stream;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
 		
 		for (int tc = 0; tc < T; tc++) {
-			int[] a = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			int[] b = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			int[] c = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
-			int[] d = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 			int[][] arr = new int[4][];
-			arr[0] = a;
-			arr[1] = b;
-			arr[2] = c;
-			arr[3] = d;
+			arr[0] = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			arr[1] = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			arr[2] = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+			arr[3] = Stream.of(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
 			
 			Set<Long> set = new HashSet<>();
 			
@@ -41,10 +38,12 @@ public class Main {
 			Collections.sort(list);
 			
 			if (list.size() == 2 && (list.get(0) * 2 == list.get(1))) {
-				System.out.println(1);
+				sb.append(1).append("\n");
 			} else {
-				System.out.println(0);
+				sb.append(0).append("\n");
 			}
 		}
+		
+		System.out.println(sb);
 	}
 }
