@@ -38,7 +38,9 @@ public class Main {
 			int b = Integer.parseInt(st.nextToken());
 			int c = Integer.parseInt(st.nextToken());
 			
-			pq.add(new Node(a, b, c));
+			if (a != b) {
+				pq.add(new Node(a, b, c));
+			}
 		}
 		
 		while (!pq.isEmpty()) {
