@@ -11,6 +11,7 @@ public class Main {
 	static String[] pick;
 	static String[] arr;
 	static List<String> a = new ArrayList<>();
+	static StringBuilder sb = new StringBuilder();
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,15 +35,17 @@ public class Main {
 		Arrays.sort(arr);
 		
 		pick(0, 0, 0, 0);
+		
+		System.out.println(sb);
 	}
 	
 	public static void pick(int idx, int cnt, int aCnt, int bCnt) {
 		if (cnt == L) {
 			if (aCnt >= 1 && bCnt >= 2) {
 				for (int i = 0; i < L; i++) {
-					System.out.print(pick[i]);
+					sb.append(pick[i]);
 				}
-				System.out.println();
+				sb.append("\n");
 			}
 			return;
 		}
