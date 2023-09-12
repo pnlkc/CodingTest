@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -35,6 +33,8 @@ public class Main {
 	}
 	
 	public static void pick(int idx, int cnt, int aCnt, int bCnt) {
+		if (C - idx + cnt < L) return;
+		
 		if (cnt == L) {
 			if (aCnt >= 1 && bCnt >= 2) {
 				for (int i = 0; i < L; i++) {
