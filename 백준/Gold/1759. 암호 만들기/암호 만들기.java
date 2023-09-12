@@ -45,8 +45,6 @@ public class Main {
 			return;
 		}
 		
-		if (idx == C) return;
-
 		pick[cnt] = arr[idx];
 		if (a.contains(arr[idx])) {
 			pick(idx + 1, cnt + 1, aCnt + 1, bCnt);
