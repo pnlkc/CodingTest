@@ -8,9 +8,9 @@ import java.util.StringTokenizer;
 
 public class Main {
 	static int L, C;
+	static String a = "aeiou";
 	static String[] pick;
 	static String[] arr;
-	static List<String> a = new ArrayList<>();
 	static StringBuilder sb = new StringBuilder();
 	
 	public static void main(String[] args) throws IOException {
@@ -19,11 +19,6 @@ public class Main {
 		L = Integer.parseInt(st1.nextToken());
 		C = Integer.parseInt(st1.nextToken());
 		pick = new String[L];
-		a.add("a");
-		a.add("e");
-		a.add("i");
-		a.add("o");
-		a.add("u");
 		
 		StringTokenizer st2 = new StringTokenizer(br.readLine());
 		arr = new String[C];
