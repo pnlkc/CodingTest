@@ -51,3 +51,5 @@ Java는 Java 8을 사용했습니다.
 ### 22. 비트마스킹(Bit Masking) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/BitMasking.md)
 
 ### 23. 다음 순열(Next Permutation) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/NextPermutation.java)
+
+### 24. CCW를 사용한 선분 교차 판별 - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/CCW%20%EC%84%A0%EB%B6%84%20%EA%B5%90%EC%B0%A8.md)
