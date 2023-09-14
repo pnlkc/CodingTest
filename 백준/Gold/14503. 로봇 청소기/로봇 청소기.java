@@ -30,12 +30,6 @@ public class Main {
 			}
 		}
 		
-		Map<Integer, Integer> dirMap = new HashMap<>(); // 반대방향 저장
-		dirMap.put(0, 2);
-		dirMap.put(1, 3);
-		dirMap.put(2, 0);
-		dirMap.put(3, 1);
-		
 		int cnt = 0;
 		
 		while (true) {
@@ -61,9 +55,8 @@ public class Main {
 			}
 			
 			if (!isExist) { // 현재 칸의 주변 4칸 중 청소되지 않은 빈 칸이 없는 경우
-				int newDir = dirMap.get(d);
-				int nx = c + dx[newDir];
-				int ny = r + dy[newDir];
+				int nx = c - dx[d];
+				int ny = r - dy[d];
 				
 				if (map[ny][nx] == 1) { // 바라보는 방향의 뒤쪽 칸이 벽이라 후진할 수 없다면 작동을 멈춘다
 					break;
