@@ -4,7 +4,6 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// 백준 2294 동전 2
 public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -16,7 +15,8 @@ public class Main {
 
 		for (int i = 0; i < n; i++) {
 			arr[i] = Integer.parseInt(br.readLine());
-			if (arr[i] <= k) dp[arr[i]] = 1;
+			if (arr[i] <= k)
+				dp[arr[i]] = 1;
 		}
 
 		arr = Arrays.stream(arr).distinct().toArray();
@@ -26,23 +26,22 @@ public class Main {
 			System.out.println(-1);
 			return;
 		}
-		
+
 		for (int i = arr[0]; i <= k; i++) {
 			for (int j = 0; j < arr.length; j++) {
-				if (arr[j] > i) break; 
-				
-				if (dp[i] == 0) {
-					if (i % arr[j] == 0 || dp[i % arr[j]] != 0) {
+				if (arr[j] > i)
+					break;
+
+				if (i == arr[j] || dp[i - arr[j]] != 0) {
+					if (dp[i] == 0) {
 						dp[i] = dp[i - arr[j]] + 1;
-					}
-				} else {
-					if (i % arr[j] == 0 || dp[i % arr[j]] != 0) {
+					} else {
 						dp[i] = Math.min(dp[i], dp[i - arr[j]] + 1);
 					}
 				}
 			}
 		}
-		
+
 		if (dp[k] == 0) {
 			System.out.println(-1);
 		} else {
