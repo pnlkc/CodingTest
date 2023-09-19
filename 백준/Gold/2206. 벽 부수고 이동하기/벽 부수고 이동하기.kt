@@ -5,15 +5,15 @@ fun main() {
     val graph = Array(n) { readln().toCharArray() }
     val visit = Array(n) { Array(m) { IntArray(2) { -1 } } }
     val queue = LinkedList<Triple<Int, Int, Int>>()
+    val xR = intArrayOf(1, -1, 0, 0)
+    val yR = intArrayOf(0, 0, 1, -1)
 
     queue.add(Triple(0, 0, 0))
     visit[0][0][0] = 1
 
     while (queue.isNotEmpty()) {
         val (y, x, canDestroy) = queue.poll()!!
-        val xR = intArrayOf(1, -1, 0, 0)
-        val yR = intArrayOf(0, 0, 1, -1)
-
+        
         for (i in 0..3) {
             val nx = x + xR[i]
             val ny = y + yR[i]
