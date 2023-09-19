@@ -67,32 +67,29 @@ public class Main {
 				int nx = c.x + dx[d];
 				int ny = c.y + dy[d];
 
-				if (nx < 0 || ny < 0 || nx >= M || ny >= N) {
+				if (nx < 0 || ny < 0 || nx >= M || ny >= N) { // 범위를 벗어난 경우
 					continue;
 				}
 
-				if (map[ny][nx] == '#')
+				if (map[ny][nx] == '#') { // 벽을 만난 경우
 					continue;
-				if (isVisit[ny][nx][c.keys])
-					continue;
+				}
 
-				
+				if (isVisit[ny][nx][c.keys]) { // 이미 방문한 경우
+					continue;
+				}
+
 				if (Character.isUpperCase(map[ny][nx])) { // 문을 만난 경우
 					if ((c.keys & (1 << (map[ny][nx] - 'A'))) != 0) {
 						isVisit[ny][nx][c.keys] = true;
 						q.add(new Pos(nx, ny, c.d + 1, c.keys));
 					}
 				} else if (Character.isLowerCase(map[ny][nx])) { // 열쇠를 만난 경우
-					if ((c.keys & (1 << (map[ny][nx] - 'a'))) == 0) {
-						isVisit[ny][nx][c.keys | (1 << (map[ny][nx] - 'a'))] = true;
-						q.add(new Pos(nx, ny, c.d + 1, (c.keys | (1 << (map[ny][nx] - 'a')))));
-					} else {
-						isVisit[ny][nx][c.keys] = true;
-						q.add(new Pos(nx, ny, c.d + 1, c.keys));
-					}
+					isVisit[ny][nx][c.keys | (1 << (map[ny][nx] - 'a'))] = true;
+					q.add(new Pos(nx, ny, c.d + 1, (c.keys | (1 << (map[ny][nx] - 'a')))));
 				} else if (map[ny][nx] == '1') { // 출구를 만난 경우
 					result = Math.min(result, c.d + 1);
-				} else {
+				} else { // 그외의 경우
 					isVisit[ny][nx][c.keys] = true;
 					q.add(new Pos(nx, ny, c.d + 1, c.keys));
 				}
