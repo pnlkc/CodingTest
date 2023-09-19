@@ -17,11 +17,6 @@ class Pos {
 		this.d = d;
 		this.keys = keys;
 	}
-
-	@Override
-	public String toString() {
-		return "Pos [x=" + x + ", y=" + y + ", d=" + d + ", keys=" + Integer.toBinaryString(keys) + "]";
-	}
 }
 
 public class Main {
