@@ -5,6 +5,7 @@ import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
+		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st1 = new StringTokenizer(br.readLine());
 		int N = Integer.parseInt(st1.nextToken());
@@ -26,11 +27,13 @@ public class Main {
 			long c = Long.parseLong(st2.nextToken());
 			
 			if (a == 1) {
-				segmentTree.update(arr, 1, 1, N, b, c);
+				segmentTree.updateDiff(arr, 1, 1, N, b, c - arr[b]);
 			} else {
-				System.out.println(segmentTree.preSum(1, 1, N, b, (int) c));
+				sb.append(segmentTree.preSum(1, 1, N, b, (int) c)).append("\n");
 			}
 		}
+		
+		System.out.println(sb);
 	}
 }
 
@@ -71,22 +74,18 @@ class SegmentTree {
 		return lSum + rSum;
 	}
 	
-	
-	// 변경된 값에 해당하는 리프노드를 직접 수정 후 부모 노들를 자식 노드를 통해 갱신하는 방식
-	void update(long[] arr, int node, int start, int end, int idx, long num) {
-		if (start > idx || end < idx) {
+	void updateDiff(long[] arr, int node, int start, int end, int idx, long diff) {
+		if (idx < start || end < idx) {
 			return;
 		}
 		
-		if (start == idx && end == idx) {
-			tree[node] = num;
-			arr[idx] = num;
-			return;
+		tree[node] += diff;
+		
+		if (start != end) {
+			updateDiff(arr, node * 2, start, (start + end) / 2, idx, diff);
+			updateDiff(arr, node * 2 + 1, (start + end) / 2 + 1, end, idx, diff);
+		} else {
+			arr[idx] += diff;
 		}
-		
-		update(arr, node * 2, start, (start + end) / 2, idx, num);
-		update(arr, node * 2 + 1, (start + end) / 2 + 1, end, idx, num);
-		
-		tree[node] = tree[node * 2] + tree[node * 2 + 1];
 	}
 }
