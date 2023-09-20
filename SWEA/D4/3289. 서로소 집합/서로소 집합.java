@@ -4,37 +4,6 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-class Pos {
-	long x, y;
-
-	public Pos(long x, long y) {
-		this.x = x;
-		this.y = y;
-	}
-}
-
-class Node implements Comparable<Node> {
-	int s, e;
-	long d;
-
-	public Node(int s, int e, long d) {
-		this.s = s;
-		this.e = e;
-		this.d = d;
-	}
-
-	@Override
-	public int compareTo(Node o) {
-		if (d < o.d) {
-			return -1;
-		} else if (d > o.d) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
-}
-
 public class Solution {
 	static int[] parent, rank;
 	
