@@ -27,7 +27,7 @@ public class Main {
 			long c = Long.parseLong(st2.nextToken());
 			
 			if (a == 1) {
-				segmentTree.updateDiff(arr, 1, 1, N, b, c - arr[b]);
+				segmentTree.update(arr, 1, 1, N, b, c);
 			} else {
 				sb.append(segmentTree.preSum(1, 1, N, b, (int) c)).append("\n");
 			}
@@ -74,18 +74,22 @@ class SegmentTree {
 		return lSum + rSum;
 	}
 	
-	void updateDiff(long[] arr, int node, int start, int end, int idx, long diff) {
-		if (idx < start || end < idx) {
+	
+	// 변경된 값에 해당하는 리프노드를 직접 수정 후 부모 노들를 자식 노드를 통해 갱신하는 방식
+	void update(long[] arr, int node, int start, int end, int idx, long num) {
+		if (start > idx || end < idx) {
 			return;
 		}
 		
-		tree[node] += diff;
-		
-		if (start != end) {
-			updateDiff(arr, node * 2, start, (start + end) / 2, idx, diff);
-			updateDiff(arr, node * 2 + 1, (start + end) / 2 + 1, end, idx, diff);
-		} else {
-			arr[idx] += diff;
+		if (start == idx && end == idx) {
+			tree[node] = num;
+			arr[idx] = num;
+			return;
 		}
+		
+		update(arr, node * 2, start, (start + end) / 2, idx, num);
+		update(arr, node * 2 + 1, (start + end) / 2 + 1, end, idx, num);
+		
+		tree[node] = tree[node * 2] + tree[node * 2 + 1];
 	}
 }
