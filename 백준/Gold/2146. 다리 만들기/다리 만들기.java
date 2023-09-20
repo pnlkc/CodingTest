@@ -97,6 +97,7 @@ public class Main {
 					
 					while (!q.isEmpty()) {
 						Pos c = q.poll();
+						if (result <= c.d) continue;
 						
 						for (int d = 0; d < 4; d++) {
 							int nx = c.x + dx[d];
