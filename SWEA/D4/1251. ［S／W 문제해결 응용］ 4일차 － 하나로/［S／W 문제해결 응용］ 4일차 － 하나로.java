@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
@@ -14,12 +16,11 @@ class Pos {
 }
 
 class Node implements Comparable<Node> {
-	int s, e;
+	int n;
 	long d;
 
-	public Node(int s, int e, long d) {
-		this.s = s;
-		this.e = e;
+	public Node(int n, long d) {
+		this.n = n;
 		this.d = d;
 	}
 
@@ -36,8 +37,6 @@ class Node implements Comparable<Node> {
 }
 
 public class Solution {
-	static int[] parent, rank;
-	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int T = Integer.parseInt(br.readLine());
@@ -48,42 +47,43 @@ public class Solution {
 			StringTokenizer st1 = new StringTokenizer(br.readLine());
 			StringTokenizer st2 = new StringTokenizer(br.readLine());
 			double E = Double.parseDouble(br.readLine());
-			
-			parent = new int[N];
-			rank = new int[N];
-			
-			for (int i = 0; i < N; i++) {
-				parent[i] = i;
-			}
+			List<List<Node>> graph = new ArrayList<>();
+			long result = 0;
 			
 			for (int i = 0; i < N; i++) {
 				island[i] = new Pos(Integer.parseInt(st1.nextToken()), Integer.parseInt(st2.nextToken()));
+				graph.add(new ArrayList<>());
 			}
-			
-			PriorityQueue<Node> pq = new PriorityQueue<>();
 			
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 					if (i == j) continue;
 					
-					pq.add(new Node(i, j, calcDist(island[i], island[j])));
+					graph.get(i).add(new Node(j, calcDist(island[i], island[j])));
 				}
 			}
 			
+			PriorityQueue<Node> pq = new PriorityQueue<>();
+			boolean[] isVisit = new boolean[N];
 			int cnt = 0;
-			long sum = 0;
+			pq.addAll(graph.get(0));
+			isVisit[0] = true;
 			
 			while (!pq.isEmpty()) {
 				Node c = pq.poll();
-				if (union(c.s, c.e)) {
-					sum += c.d;
+				
+				if (!isVisit[c.n]) {
+					result += c.d;
+					isVisit[c.n] = true;
+					pq.addAll(graph.get(c.n));
+					
 					if (++cnt == N - 1) {
 						break;
 					}
 				}
 			}
 			
-			System.out.println("#" + tc + " " + Math.round(E * sum));
+			System.out.println("#" + tc + " " + Math.round(E * result));
 		}
 	}
 	
@@ -91,30 +91,5 @@ public class Solution {
 		long xDiff = p1.x - p2.x;
 		long yDiff = p1.y - p2.y;
 		return xDiff * xDiff + yDiff * yDiff;
-	}
-	
-	public static boolean union(int n1, int n2) {
-		int p1 = find(n1);
-		int p2 = find(n2);
-		
-		if (p1 == p2) return false;
-		
-		if (rank[p1] > rank[p2]) {
-			parent[p2] = p1;
-		} else if (rank[p1] < rank[p2]) {
-			parent[p1] = p2;
-		} else {
-			parent[p2] = p1;
-			rank[p1]++;
-		}
-		
-		return true;
-	}
-	
-	public static int find(int n) {
-		if (parent[n] != n) {
-			return parent[n] = find(parent[n]);
-		}
-		return parent[n];
 	}
 }
