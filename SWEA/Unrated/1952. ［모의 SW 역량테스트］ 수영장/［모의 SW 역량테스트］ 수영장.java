@@ -4,10 +4,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Solution {
-	static int dp, mp, tmp, yp; // 1일, 1달, 3달, 1년
-	static int min;
-	static int[] arr;
-	
 	public static void main(String[] args) throws IOException{
 		
 		StringBuilder sb = new StringBuilder();
@@ -16,46 +12,32 @@ public class Solution {
 		
 		for (int tc = 1; tc <= T; tc++) {
 			StringTokenizer st1 = new StringTokenizer(br.readLine());
-			dp = Integer.parseInt(st1.nextToken());
-			mp = Integer.parseInt(st1.nextToken());
-			tmp = Integer.parseInt(st1.nextToken());
-			yp = Integer.parseInt(st1.nextToken());
+			int dp = Integer.parseInt(st1.nextToken());
+			int mp = Integer.parseInt(st1.nextToken());
+			int tmp = Integer.parseInt(st1.nextToken());
+			int yp = Integer.parseInt(st1.nextToken());
+			int[] arr = new int[12];
+			int[] memo = new int[13];
 			
 			StringTokenizer st2 = new StringTokenizer(br.readLine());
-			arr = new int[12];
-			min = 0;
 			
 			for (int i = 0; i < 12; i++) {
 				arr[i] = Integer.parseInt(st2.nextToken());
-				min += dp * arr[i];
+				arr[i] = Math.min(arr[i] * dp, mp);
 			}
 			
-			min = Math.min(min, yp);
+			for (int i = 1; i <= 12; i++) {
+				
+				if (i - 3 >= 0) {
+					memo[i] = Math.min(memo[i - 1] + arr[i - 1], memo[i - 3] + tmp);
+				} else {
+					memo[i] = memo[i - 1] + arr[i - 1];
+				}
+			}
 			
-			calc(0, 0);
-			
-			sb.append("#" + tc + " " + min).append("\n");
+			sb.append("#" + tc + " " + Math.min(yp, memo[12])).append("\n");
 		}
 		
 		System.out.println(sb);
-	}
-	
-	public static void calc(int m, int pee) {
-		if (m >= 12) {
-			min = Math.min(min, pee);
-			return;
-		}
-		
-		if (pee >= min) {
-			return;
-		}
-		
-		if (arr[m] != 0) {
-			calc(m + 1, pee + arr[m] * dp);
-			calc(m + 1, pee + mp);
-			calc(m + 3, pee + tmp);
-		} else {
-			calc(m + 1, pee);
-		}
 	}
 }
