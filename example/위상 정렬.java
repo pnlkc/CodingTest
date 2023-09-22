@@ -47,7 +47,6 @@ public class Main {
 			int b = Integer.parseInt(st2.nextToken()) - 1; // 노드 번호와 인덱스 번호 차이 주의
 			graph.get(a).add(b); // 그래프에 추가
 			cnt[b]++; // 진입 차수 추가
-
 		}
 
 		// 위상 정렬 알고리즘
