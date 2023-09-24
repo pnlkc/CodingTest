@@ -4,12 +4,12 @@
 // 최소 신장 트리(MST, Minimum Spanning Tree)를 풀기 위해 반드시 알아야 하는 알고리즘입니다
 class Union_Find(n: Int) {
     private val parent = IntArray(n) { it } // 부모 배열은 생성시 자기 자신을 가르키도록 선언합니다
-    private val rank = IntArray(n)
+    private val rank = IntArray(n) // 효율성1. rank를 이용한 union
 
     // 최상위 루트 노드를 찾는 메소드입니다
     private fun find(node: Int): Int {
         if (parent[node] != node) {
-            return parent[node] = find(parent[node]) // 부모 노드 값 갱신을 통해 시간복잡도를 줄일 수 있습니다
+            return parent[node] = find(parent[node]) // 효율성2. Path Compression - 부모 노드 값 갱신을 통해 시간복잡도를 줄일 수 있습니다
         }
         return parent[node]
     }
