@@ -54,7 +54,6 @@ class ND {
 	int n, d; // n = 노드 번호, d = 거리
 
 	public ND(int n, int d) {
-		super();
 		this.n = n;
 		this.d = d;
 	}
