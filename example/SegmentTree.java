@@ -11,15 +11,15 @@
 public class SegmentTree {
 	long[] tree;
 
-  // 세그먼트 트리를 적당한 크기로 생성
+	// 세그먼트 트리를 적당한 크기로 생성
 	public SegmentTree(int n) {
 		int h = ((int) (Math.log(n) / Math.log(2))) + 1;
 		int cnt = (int) Math.pow(2, h + 1);
 		tree = new long[cnt + 1];
 	}
 
-  // 세그먼트 트리 초기화
-  // 시작은 start = 1, end = N
+	// 세그먼트 트리 초기화
+	// 시작은 start = 1, end = N
 	void init(long[] arr, int node, int start, int end) {
 		if (start == end) { // 리프 노드인 경우
 			tree[node] = arr[start];
@@ -30,7 +30,7 @@ public class SegmentTree {
 		}
 	}
 
-  // 세그먼트 트리를 통해 구간합 구하기
+	// 세그먼트 트리를 통해 구간합 구하기
 	// [start,end] : 노드의 구간, [left,right] : 누적합을 구할 구간
 	long preSum(int node, int start, int end, int left, int right) {
 		if (left > end || right < start) { // 1. [left,right]와 [start,end]가 겹치지 않는 경우
