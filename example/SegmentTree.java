@@ -13,7 +13,7 @@ public class SegmentTree {
 
 	// 세그먼트 트리를 적당한 크기로 생성
 	public SegmentTree(int n) {
-		int h = ((int) (Math.log(n) / Math.log(2))) + 1;
+		int h = (int) Math.ceil(Math.log(n) / Math.log(2));
 		int cnt = (int) Math.pow(2, h + 1);
 		tree = new long[cnt];
 	}
