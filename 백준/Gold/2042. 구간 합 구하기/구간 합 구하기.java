@@ -5,7 +5,6 @@ import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
-		StringBuilder sb = new StringBuilder();
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st1 = new StringTokenizer(br.readLine());
 		int N = Integer.parseInt(st1.nextToken());
@@ -29,11 +28,9 @@ public class Main {
 			if (a == 1) {
 				segmentTree.update(arr, 1, 1, N, b, c);
 			} else {
-				sb.append(segmentTree.preSum(1, 1, N, b, (int) c)).append("\n");
+				System.out.println(segmentTree.preSum(1, 1, N, b, (int) c));
 			}
 		}
-		
-		System.out.println(sb);
 	}
 }
 
