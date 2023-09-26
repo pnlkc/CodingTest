@@ -15,7 +15,7 @@ public class SegmentTree {
 	public SegmentTree(int n) {
 		int h = ((int) (Math.log(n) / Math.log(2))) + 1;
 		int cnt = (int) Math.pow(2, h + 1);
-		tree = new long[cnt + 1];
+		tree = new long[cnt];
 	}
 
 	// 세그먼트 트리 초기화
