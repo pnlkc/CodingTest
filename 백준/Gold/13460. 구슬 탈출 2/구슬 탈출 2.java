@@ -11,6 +11,11 @@ class Pos {
 		this.x = x;
 		this.y = y;
 	}
+
+	@Override
+	public String toString() {
+		return "Pos [x=" + x + ", y=" + y + "]";
+	}
 }
 
 public class Main {
@@ -71,7 +76,6 @@ public class Main {
 			Pos nr = r;
 			Pos nb = b;
 
-			// r, b 구슬의 이동 우선순위 지정
 			if ((rx == bx && ry > by) || (ry == by && rx > bx)) {
 				arr[0] = r;
 				arr[1] = b;
@@ -80,7 +84,7 @@ public class Main {
 				arr[1] = r;
 			}
 
-			for (int i = 0; i < 2; i++) { // 우선 순위에 따라 r, b 구슬 이동
+			for (int i = 0; i < 2; i++) {
 				Pos c = arr[i];
 				
 				int nx = c.x;
@@ -99,8 +103,8 @@ public class Main {
 					nb = new Pos(ny, nx);
 				}
 				
-				tMap[ny][nx] = tMap[c.y][c.x]; // 구슬을 새로운 위치로 이동
-				if (ny != c.y || nx != c.x) tMap[c.y][c.x] = 0; // 이동한 경우에만 현재 칸에서 구슬 삭제
+				tMap[ny][nx] = tMap[c.y][c.x];
+				if (ny != c.y || nx != c.x) tMap[c.y][c.x] = 0;
 
 				// 다음 칸이 구멍인 경우
 				if (nx + dx[d] >= 0 && nx + dx[d] < M && ny + dy[d] >= 0 && ny + dy[d] < N && tMap[ny + dy[d]][nx + dx[d]] == 2) {
@@ -113,19 +117,17 @@ public class Main {
 				} 
 			}
 			
-			// 새로 이동한 위치에서 구슬 탈출 체크
-			if (check(nr, nb)) { // 빨간 구슬만 탈출한 경우
+			if (check(nr, nb)) {
 				num = cnt;
 				return;
-			} else { // 그 외의 경우
-				if (nb.x != -1 && nb.y != -1) { // 파란 구슬이 탈출하지 않은 경우
+			} else {
+				if (nb.x != -1 && nb.y != -1) {
 					move(tMap, nr, nb, cnt + 1);
 				}
 			}
 		}
 	}
 	
-	// 빨간 구슬만 빠졌는지 확인
 	public static boolean check(Pos r, Pos b) {
 		if (r.x == -1 && r.y == -1 && b.x != -1 && b.y != -1) {
 			return true;
