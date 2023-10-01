@@ -1,6 +1,7 @@
-// LIS(Longest Increasing Subsequence) 알고리즘은 가장 긴 증가하는 부분 수열을 찾는 알고리즘입니다.
-// LIS를 이분 탐색을 통해 푸는 예제입니다.
-// ex) 백준 12015번 가장 긴 증가하는 부분 수열2
+// LIS(Longest Increasing Subsequence) 알고리즘은 가장 긴 증가하는 부분 수열을 찾는 알고리즘입니다
+// LIS를 이분 탐색을 통해 푸는 예제입니다
+// 시간 복잡도는 O(NlogN)입니다
+// ex) 백준 12015번 가장 긴 증가하는 부분 수열2, 3
 class LIS_Binary_Search {
     fun example() {
         val n = readln().toInt()
