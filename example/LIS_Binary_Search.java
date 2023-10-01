@@ -29,6 +29,7 @@ public class LIS_Binary_Search {
 
 		p: for (int i = 1; i < N; i++) { // 0번은 추가했으므로 1번부터 시작
 			if (arr[i] > list.get(list.size() - 1)) { // 현재 숫자가 이전 숫자보다 큰 경우
+				record[i] = list.size();
 				list.add(arr[i]);
 			} else { // 현재 숫자가 이전 숫자보다 작거나 같은 경우
 				int s = 0;
@@ -47,6 +48,7 @@ public class LIS_Binary_Search {
 				}
 
 				list.set(e, arr[i]); // 해당 위치를 현재 숫자로 변경
+				record[i] = e;
 			}
 		}
 
