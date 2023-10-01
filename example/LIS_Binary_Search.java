@@ -50,7 +50,7 @@ public class LIS_Binary_Search {
 			}
 		}
 
-		List<Integer> result = new ArrayList<>();
+		List<Integer> result = new ArrayList<>(); // 실제 증가하는 부분 수열이 담길 리스트
 		int num = list.size() - 1; // 시작 인덱스는 증가하는 부분 수열의 길이 - 1 (마지막 인덱스)
 		for (int i = N - 1; i >= 0; i--) { // 역순으로 인덱스에 따른 값을 저장
 			if (record[i] == num) {
