@@ -22,7 +22,7 @@ Java는 Java 8을 사용했습니다.
 
 ### 8. LCS(Longest Common Subsequence) - [Kotlin](https://github.com/pnlkc/CodingTest/blob/main/example/LCS.kt)
 
-### 9. LIS(Longest Increasing Subsequence, Binary Search) - [Kotlin](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_Binary_Search.kt)
+### 9. LIS(Longest Increasing Subsequence, Binary Search) - [Kotlin](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_Binary_Search.kt) / [Java](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_Binary_Search.java)
 
 ### 10. LIS(Longest Increasing Subsequence, DP) - [Kotlin](https://github.com/pnlkc/CodingTest/blob/main/example/LIS_DP.kt)
 
