@@ -16,8 +16,9 @@ public class LIS_Binary_Search {
 		int N = Integer.parseInt(br.readLine());
 		int[] arr = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		List<Integer> list = new ArrayList<>(); // 증가하는 부분 수열을 담을 리스트
-
+		List<Integer> list = new ArrayList<>(); // 증가하는 부분 수열 계산하기 위한 리스트 (실제 결과와는 다름)
+		int[] record = new int[N]; // 실제 증가하는 부분 수열을 구하기 위한 배열
+		
 		// 배열 초기화
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
@@ -49,6 +50,17 @@ public class LIS_Binary_Search {
 			}
 		}
 
-		System.out.println(list.size());
+		List<Integer> result = new ArrayList<>();
+		int num = list.size() - 1; // 시작 인덱스는 증가하는 부분 수열의 길이 - 1 (마지막 인덱스)
+		for (int i = N - 1; i >= 0; i--) { // 역순으로 인덱스에 따른 값을 저장
+			if (record[i] == num) {
+				result.add(arr[i]);
+				num--;
+			}
+		}
+
+		Collections.reverse(result); // 실제 증가하는 부분 수열을 오름차순으로 변경 (뒤집기)
+		System.out.println(list.size()); // 증가하는 부분 수열의 길이
+		System.out.println(result); // 실제 증가하는 부분 수열
 	}
 }
