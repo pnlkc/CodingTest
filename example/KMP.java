@@ -20,7 +20,7 @@ public class KMP {
 		int idx = 0; // 접두사와 접미사의 공통된 개수
 		
 		for (int i = 1; i < p.length(); i++) { // 패턴을 1번부터 검색 (0의 경우 1글자이므로 스킵)
-			while (idx > 0 && p.charAt(i) != p.charAt(idx)) { // 현재 검색하는 부분의 길이가 2이상이고 공통부분이 끝긴 경우
+			while (idx > 0 && p.charAt(i) != p.charAt(idx)) { // 현재 검색하는 부분의 길이가 2이상이고 공통부분이 끊긴 경우
 				idx = pArr[idx - 1];
 			}
 			
