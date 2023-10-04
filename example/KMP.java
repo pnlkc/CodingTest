@@ -42,8 +42,8 @@ public class KMP {
 			
 			if (p.charAt(idx) == str.charAt(i)) { // 현재 패턴의 위치의 문자와 전체 문자열의 위치의 문자가 동일한 경우
 				if (idx + 1 == p.length()) { // 전체 문자열에서 패턴을 찾은 경우
+					pos = i - idx; // 패턴이 시작되는 위치는 i - idx가 됨
 					idx = pArr[idx];
-					pos = i - p.length(); // 패턴이 시작되는 위치는 i - p.length()가 됨
 					break;
 				} else { // 아직 패턴 문자열을 전부 검사하지 못한 경우
 					idx++; // 패턴의 인덱스 포인터 값 증가
