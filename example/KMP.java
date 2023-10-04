@@ -25,7 +25,7 @@ public class KMP {
 			}
 			
 			if (p.charAt(i) == p.charAt(idx)) { // 접두사와 접미사가 공통된 경우
-				pArr[i] = ++idx; // idx 증가 후 pArr[i]에 공통된 갯수 저장
+				pArr[i] = ++idx; // idx 증가 후 pArr[i]에 공통된 개수 저장
 			}
 		}
 	}
