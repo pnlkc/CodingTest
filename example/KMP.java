@@ -32,7 +32,7 @@ public class KMP {
 	
 	// 전체 문자열(str)과 패턴(p)의 공통된 부분 찾기
 	public static boolean find(String str, String p) {
-		int idx = 0; // 패턴의 위치를 나타낼 포인터
+		int idx = 0; // 패턴의 위치(인덱스)를 나타낼 포인터
 		int pos = -1; // 패턴을 발견한 인덱스를 저장할 변수
 		
 		for (int i = 0; i < str.length(); i++) { // 전체 문자열 탐색
