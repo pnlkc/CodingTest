@@ -9,7 +9,7 @@
  *  ex) 백준 1786번 찾기
  */
 public class KMP {
-	static int[] pArr; // 패턴의 접두사와 접미사를 활용하여 구간을 스킵할기 위한 전처리 배열
+	static int[] pArr; // 패턴의 접두사와 접미사를 활용하여 구간을 스킵하기 위한 전처리 배열
 	
 	public KMP(int pLength) {
 		pArr = new int[pLength]; // pArr 배열을 패턴의 길이로 초기화
