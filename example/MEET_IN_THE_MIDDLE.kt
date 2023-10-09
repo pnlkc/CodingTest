@@ -10,7 +10,7 @@ class MEET_IN_THE_MIDDLE {
         var count = 0
         val (n, c) = readln().split(' ').map(String::toInt)
         val st = StringTokenizer(readln())
-        // 1. 주어진 입력 데이터를 두 반으로 나눕니다.
+        // 1. 주어진 입력 데이터를 두 개의 부분으로 나눕니다.
         val leftArr = IntArray(n / 2) { st.nextToken().toInt() }
         val rightArr = IntArray(n - n / 2) { st.nextToken().toInt() }
         val lResult = calc(leftArr)
