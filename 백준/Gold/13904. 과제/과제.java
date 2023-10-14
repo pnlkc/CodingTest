@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int N = Integer.parseInt(br.readLine());
-		PriorityQueue<Data> pq = new PriorityQueue<>(Comparator.comparing(Data::getD).thenComparing(Data::getW, Comparator.reverseOrder()));
+		PriorityQueue<Data> pq = new PriorityQueue<>((Data d1, Data d2) -> d1.d - d2.d);
 
 		for (int i = 0; i < N; i++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
@@ -54,13 +54,5 @@ class Data {
 	public Data(int d, int w) {
 		this.d = d;
 		this.w = w;
-	}
-
-	public int getD() {
-		return d;
-	}
-
-	public int getW() {
-		return w;
 	}
 }
