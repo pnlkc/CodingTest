@@ -16,10 +16,8 @@ public class Main {
 			PriorityQueue<Integer> pq1 = new PriorityQueue<>(Comparator.reverseOrder());
 			PriorityQueue<Integer> pq2 = new PriorityQueue<>();
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			int half = M / 2;
-			if (M % 2 == 1) {
-				half++;
-			}
+			
+			int half = M / 2 + 1; // 중앙값의 개수를 담을 변수
 			sb.append(half + "\n");
 			
 			for (int i = 1; i <= M; i++) {
