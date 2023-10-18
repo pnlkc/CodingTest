@@ -57,3 +57,5 @@ Java는 Java 8을 사용했습니다.
 ### 25. 세그먼트 트리(Segment Tree) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/SegmentTree.java)
 
 ### 26. KMP(Knuth-Morris-Pratt) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/KMP.java)
+
+### 27. 느리게 갱신되는 세그먼트 트리(Segment Tree With Lazy Propagation) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/SegmentTreeWithLazyPropagation.java)
