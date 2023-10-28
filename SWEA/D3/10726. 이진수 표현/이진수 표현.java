@@ -6,23 +6,22 @@ import java.util.StringTokenizer;
 public class Solution {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int T = Integer.parseInt(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		int TC = Integer.parseInt(br.readLine());
 		
-		p: for (int tc = 1; tc <= T; tc++) {
+		for (int tc = 1; tc <= TC; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			int N = Integer.parseInt(st.nextToken());
 			int M = Integer.parseInt(st.nextToken());
-			
-			for (int i = 0; i < N; i++) {
-				if ((M & 1) != 1) {
-					System.out.println("#" + tc + " OFF");
-					continue p;
-				}
-				
-				M >>= 1;
+			int num = (1 << N) - 1;
+
+			if ((M & num) == num) {
+				sb.append("#" + tc + " ON" + "\n");
+			} else {
+				sb.append("#" + tc + " OFF" + "\n");
 			}
-			
-			System.out.println("#" + tc + " ON");
 		}
+		
+		System.out.println(sb);
 	}
 }
