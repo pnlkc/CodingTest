@@ -31,7 +31,6 @@ public class Main {
 		
 		for (int i = 0; i < N; i++) {
 			boolean[] isVisit = new boolean[N];
-			isVisit[i] = true;
 			dfs(i, 1, isVisit);
 		}
 		
@@ -52,12 +51,14 @@ public class Main {
 			return;
 		}
 		
+		isVisit[n] = true;
+		
 		for (int next : graph.get(n)) {
 			if (!isVisit[next]) {
-				boolean[] temp = isVisit.clone();
-				temp[next] = true;
-				dfs(next, depth + 1, temp);
+				dfs(next, depth + 1, isVisit);
 			}
 		}
+		
+		isVisit[n] = false;
 	}
 }
