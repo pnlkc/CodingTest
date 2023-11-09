@@ -13,12 +13,13 @@ public class Main {
 		N = Integer.parseInt(br.readLine()); 
 		num = -1;
 
+		// 1개부터 10개까지 가능
 		for (int i = 1; i <= 10; i++) {
-			for (int j = 0; j <= 9; j++) {
+			for (int j = 0; j <= 9; j++) { // 작은 수부터 큰 수로 탐색 해야 됨 
 				pick.offerLast(j);
 				pick(i, 1, j);
 				
-				if (num >= N) {
+				if (num >= N) { // N번째 감소하는 수를 찾은 경우
 					return;
 				}
 				
@@ -28,11 +29,11 @@ public class Main {
 			}
 		}
 		
-		System.out.println(-1);
+		System.out.println(-1); // N번째 감소하는 수가 없는 경우에만 여기까지 오게 됨
 	}
 	
 	public static void pick(int max, int cnt, int idx) {
-		if (num > N) {
+		if (num >= N) { // 이미 찾은 경우
 			return;
 		}
 		
