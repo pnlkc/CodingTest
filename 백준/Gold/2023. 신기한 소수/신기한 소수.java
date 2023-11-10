@@ -31,7 +31,7 @@ public class Main {
 		}
 		
 		for (int i = 0; i < 10; i++) {
-			int newNum = Integer.parseInt(String.valueOf(num) + String.valueOf(i));
+			int newNum = Integer.parseInt(String.valueOf(num) + i);
 			
 			calc(newNum, length + 1); 
 		}
