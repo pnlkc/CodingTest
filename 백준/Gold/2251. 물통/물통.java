@@ -129,9 +129,4 @@ class Data {
 		this.b = b;
 		this.c = c;
 	}
-
-	@Override
-	public String toString() {
-		return "Data [a=" + a + ", b=" + b + ", c=" + c + "]";
-	}
 }
