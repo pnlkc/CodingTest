@@ -92,9 +92,4 @@ class Pos {
 		this.c = c;
 		this.d = d;
 	}
-
-	@Override
-	public String toString() {
-		return "Pos [l=" + l + ", r=" + r + ", c=" + c + ", d=" + d + "]";
-	}
 }
