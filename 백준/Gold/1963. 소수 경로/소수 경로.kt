@@ -28,10 +28,11 @@ fun main() {
 
 
             for (i in 0..3) {
+                val cNumToArr = cNum.toString().toCharArray()
+                
                 for (j in 0..9) {
                     if (i == 0 && j == 0) continue
 
-                    val cNumToArr = cNum.toString().toCharArray()
                     cNumToArr[i] = j.digitToChar()
                     val newNum = cNumToArr.joinToString("").toInt()
 
@@ -48,11 +49,11 @@ fun main() {
 }
 
 fun init(pN: MutableList<Boolean>) {
-   p@ for (i in 1000..9999) {
-       for (j in 2..sqrt(i.toDouble()).roundToInt()) {
-           if (i % j == 0) continue@p
-       }
+    p@ for (i in 1000..9999) {
+        for (j in 2..sqrt(i.toDouble()).roundToInt()) {
+            if (i % j == 0) continue@p
+        }
 
-       pN[i] = true
-   }
+        pN[i] = true
+    }
 }
