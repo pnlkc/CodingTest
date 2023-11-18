@@ -4,48 +4,53 @@ import java.util.LinkedList
 import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
+val pN = MutableList(10001) { false }
+
 fun main() {
     val T = readln().toInt()
-    val pN = MutableList(10001) { false }
 
     init(pN)
 
     p@ for (tc in 1..T) {
         val (a, b) = readln().split(" ").map { it.toInt() }
-        val isVisit = MutableList(10001) { false }
-        val q = LinkedList<Pair<Int, Int>>()
+        bfs(a, b)
+    }
+}
 
-        q.offer(a to 0);
-        isVisit[a] = true
+fun bfs(a: Int, b: Int) {
+    val isVisit = MutableList(10001) { false }
+    val q = LinkedList<Pair<Int, Int>>()
 
-        while (q.isNotEmpty()) {
-            val (cNum, cD) = q.poll()!!
+    q.offer(a to 0)
+    isVisit[a] = true
 
-            if (cNum == b) {
-                println(cD)
-                continue@p
-            }
+    while (q.isNotEmpty()) {
+        val (cNum, cD) = q.poll()!!
+
+        if (cNum == b) {
+            println(cD)
+            return
+        }
 
 
-            for (i in 0..3) {
-                val cNumToArr = cNum.toString().toCharArray()
-                
-                for (j in 0..9) {
-                    if (i == 0 && j == 0) continue
+        for (i in 0..3) {
+            val cNumToArr = cNum.toString().toCharArray()
 
-                    cNumToArr[i] = j.digitToChar()
-                    val newNum = cNumToArr.joinToString("").toInt()
+            for (j in 0..9) {
+                if (i == 0 && j == 0) continue
 
-                    if (pN[newNum] && !isVisit[newNum]) {
-                        q.offer(newNum to (cD + 1))
-                        isVisit[newNum] = true
-                    }
+                cNumToArr[i] = j.digitToChar()
+                val newNum = cNumToArr.joinToString("").toInt()
+
+                if (pN[newNum] && !isVisit[newNum]) {
+                    q.offer(newNum to (cD + 1))
+                    isVisit[newNum] = true
                 }
             }
         }
-
-        println("Impossible")
     }
+
+    println("Impossible")
 }
 
 fun init(pN: MutableList<Boolean>) {
