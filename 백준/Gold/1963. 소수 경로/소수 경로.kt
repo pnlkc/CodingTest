@@ -1,5 +1,3 @@
-package com.example.notepad
-
 import java.util.LinkedList
 
 val pN = MutableList(10001) { true }
