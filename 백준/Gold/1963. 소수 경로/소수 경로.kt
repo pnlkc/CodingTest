@@ -1,10 +1,8 @@
 package com.example.notepad
 
 import java.util.LinkedList
-import kotlin.math.roundToInt
-import kotlin.math.sqrt
 
-val pN = MutableList(10001) { false }
+val pN = MutableList(10001) { true }
 
 fun main() {
     val T = readln().toInt()
@@ -54,11 +52,13 @@ fun bfs(a: Int, b: Int) {
 }
 
 fun init(pN: MutableList<Boolean>) {
-    p@ for (i in 1000..9999) {
-        for (j in 2..sqrt(i.toDouble()).roundToInt()) {
-            if (i % j == 0) continue@p
-        }
+    for (i in 2..10000) {
+        if (!pN[i]) continue
 
-        pN[i] = true
+        for (j in 2..(10000 / i)) {
+            if (i * j > 10000) continue
+
+            pN[i * j] = false
+        }
     }
 }
