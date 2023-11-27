@@ -167,9 +167,4 @@ class Data {
 	public int getCnt() {
 		return cnt;
 	}
-
-	@Override
-	public String toString() {
-		return "Data [num=" + num + ", cnt=" + cnt + "]";
-	}
 }
