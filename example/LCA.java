@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-/* LCA 알고리즘 중 DP + DFS를 사용한 코드입니다
+/* LCA(Lowest Common Ancestor, 최소 공통 조상) 알고리즘 중 DP + DFS를 사용한 코드입니다
  * 
  * 각 노드의 2^N번 째 부모의 노드를 저장하여 탐색 속도를 높이는 알고리즘입니다
  * 예를 들어, 13번째 부모를 찾을 때, 8 + 4 + 1로 탐색을 하여 O(logN)의 시간 복잡도로 탐색하는 방법입니다
