@@ -19,7 +19,7 @@ import java.util.StringTokenizer;
  *
  * ex) 백준 11437번 LCA
  */ 
-public class LCA_ {
+public class LCA_DP {
 	static int N, H;
 	static List<Integer>[] tree;
 	static int[][] parent;
