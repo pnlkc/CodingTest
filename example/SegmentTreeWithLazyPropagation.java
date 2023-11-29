@@ -28,7 +28,7 @@ public class SegmentTreeWithLazyPropagation {
 		tree[node] = tree[node * 2].add(tree[node * 2 + 1]);
 	}
 
-  // lazy 배열 갱신 메소드
+  	// lazy 배열 갱신 메소드
 	public void updateLazy(int node, int s, int e) {
 		if (lazy[node] != BigInteger.ZERO) {
 			tree[node] = tree[node].add(lazy[node].multiply(BigInteger.valueOf(e - s + 1)));
