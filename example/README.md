@@ -60,4 +60,4 @@ Java는 Java 8을 사용했습니다.
 
 ### 27. 느리게 갱신되는 세그먼트 트리(Segment Tree With Lazy Propagation) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/SegmentTreeWithLazyPropagation.java)
 
-### 28. LCA (Lowest Common Ancestor, 최소 공통 조상) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/LCA.java)
+### 28. LCA_DP (Lowest Common Ancestor, 최소 공통 조상) - [Java](https://github.com/pnlkc/CodingTest/blob/main/example/LCA.java)
