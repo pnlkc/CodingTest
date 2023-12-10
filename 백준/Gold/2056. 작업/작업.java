@@ -46,16 +46,15 @@ public class Main {
 		while (!q.isEmpty()) {
 			Data c = q.poll();
 			
-			if (isVisit[c.num] > c.time) {
-				continue;
-			}
-			
 			result = Math.max(result, c.time);
 			
 			for (int next : graph.get(c.num)) {
 				if (isVisit[next] < c.time + times[next]) {
-					q.offer(new Data(next, c.time + times[next]));
 					isVisit[next] = c.time + times[next];
+				}
+				
+				if (--cnt[next] == 0) {
+					q.offer(new Data(next, isVisit[next]));
 				}
 			}
 		}
