@@ -14,6 +14,9 @@ public class Main {
 		List<List<Integer>> graph = new ArrayList<>();
 		int[] times = new int[N + 1];
 		int[] cnt = new int[N + 1];
+		Queue<Data> q = new LinkedList<>();
+		int[] isVisit = new int[N + 1];
+		int result = 0;
 		
 		for (int i = 0; i <= N; i++) {
 			graph.add(new ArrayList<>());
@@ -33,17 +36,12 @@ public class Main {
 			}
 		}
 		
-		Queue<Data> q = new LinkedList<>();
-		int[] isVisit = new int[N + 1];
-		
 		for (int i = 1; i <= N; i++) {
 			if (cnt[i] == 0) {
 				q.offer(new Data(i, times[i]));
 				isVisit[i] = times[i];
 			}
 		}
-		
-		int result = 0;
 		
 		while (!q.isEmpty()) {
 			Data c = q.poll();
