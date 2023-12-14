@@ -17,19 +17,15 @@ public class Main {
 			
 			for (int j = 1; j <= W + 1; j++) {
 				if (num == 1) {
-					dp[i][j][0] = Math.max(dp[i][j][0], dp[i - 1][j - 1][1] + 1);
-					dp[i][j][0] = Math.max(dp[i][j][0], dp[i - 1][j][0] + 1);
-					dp[i][j][1] = Math.max(dp[i][j][1], dp[i - 1][j][1]);
-					dp[i][j][1] = Math.max(dp[i][j][1], dp[i - 1][j - 1][0]);
+					dp[i][j][0] = Math.max(dp[i - 1][j][0] + 1, dp[i - 1][j - 1][1] + 1);
+					dp[i][j][1] = Math.max(dp[i - 1][j - 1][0], dp[i - 1][j][1]);
 				} else {
 					if (i == 1 && j == 1) {
 						continue;
 					}
 					
-					dp[i][j][1] = Math.max(dp[i][j][1], dp[i - 1][j - 1][0] + 1);
-					dp[i][j][1] = Math.max(dp[i][j][1], dp[i - 1][j][1] + 1);
-					dp[i][j][0] = Math.max(dp[i][j][0], dp[i - 1][j][0]);
-					dp[i][j][0] = Math.max(dp[i][j][0], dp[i - 1][j - 1][1]);
+					dp[i][j][1] = Math.max(dp[i - 1][j][1] + 1, dp[i - 1][j - 1][0] + 1);
+					dp[i][j][0] = Math.max(dp[i - 1][j - 1][1], dp[i - 1][j][0]);
 				}
 			}
 		}
