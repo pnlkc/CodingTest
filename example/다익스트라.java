@@ -17,7 +17,6 @@ public class Dijkstra {
 		int[] dist = new int[v + 1]; // 노드의 최소 거리를 담을 배열
 		Arrays.fill(dist, Integer.MAX_VALUE);
 //		Arrays.fill(dist, -1);
-		boolean[] isVisit = new boolean[v + 1]; // 방문 여부 체크를 위한 배열
 		
 		// Comparator 람다식 사용
 		PriorityQueue<ND> pq = new PriorityQueue<>((ND o1, ND o2) -> o1.d - o2.d);
@@ -27,9 +26,10 @@ public class Dijkstra {
 		
 		while (!pq.isEmpty()) {
 			ND c = pq.poll(); // 경유할 노드
-			
-			if (isVisit[c.n]) continue; // 방문한 노드면 continue
-			isVisit[c.n] = true; // 현재 노드를 방문했다고 변경
+
+			if (c.d > dist[c.n]) { // 이미 더 짧은 경로가 존재하는 경우
+				continue;
+			}
 			
 //			if (dist[c.n] != -1 && c.d > dist[c.n]) { // 이미 더 짧은 경로가 존재하는 경우
 //				continue;
