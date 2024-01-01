@@ -61,8 +61,7 @@ public class Main {
 				
 				if (graph.get(c.n) != null) {
 					for (int nn : graph.get(c.n)) {
-						cnt[nn]--;
-						if (cnt[nn] >= 0) {
+						if (--cnt[nn] >= 0) {
 							dist[nn] = Math.max(dist[nn], c.t + dL[nn]);
 							if (cnt[nn] == 0) {
 								queue.add(new Node(nn, dist[nn]));
