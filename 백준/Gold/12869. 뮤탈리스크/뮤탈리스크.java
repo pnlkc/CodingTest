@@ -27,6 +27,7 @@ public class Main {
 		System.out.println(result);
 	}
 
+	// 뮤탈리스크의 쿠션 공격을 수행하는 함수
 	public static void calc(int[] arr, int cnt, int[] dp) {
 		if (dp[toInt(arr)] < cnt) {
 			return;
@@ -46,6 +47,7 @@ public class Main {
 		pick(arr, cnt, dp, 0);
 	}
 	
+	// 각 SCV가 받을 데미지를 선택하는 함수
 	public static void pick(int[] arr, int cnt, int[] dp, int n) {
 		if (n == N) {
 			int[] numArr = { 9, 3, 1 };
@@ -75,6 +77,7 @@ public class Main {
 		}
 	}
 
+	// dp를 위해 arr 배열의 숫자를 인덱스로 바꾸는 함수
 	public static int toInt(int[] arr) {
 		String[] strArr = new String[N];
 		
