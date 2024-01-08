@@ -33,25 +33,25 @@ public class Main {
 						
 						int num = map[i][j];
 						
+						int floor = (int) Math.floor(Math.sqrt(num));
+						int ceil = (int) Math.ceil(Math.sqrt(num));
+						
+						if (floor == ceil && floor * ceil == num) {
+							max = Math.max(max, num);
+						}
+						
 						while (y + k >= 0 && y + k < N && x + l >= 0 && x + l < M) {
 							y += k;
 							x += l;
 							num *= 10;
 							num += map[y][x];
 							
-							int floor = (int) Math.floor(Math.sqrt(num));
-							int ceil = (int) Math.ceil(Math.sqrt(num));
+							floor = (int) Math.floor(Math.sqrt(num));
+							ceil = (int) Math.ceil(Math.sqrt(num));
 							
 							if (floor == ceil && floor * ceil == num) {
 								max = Math.max(max, num);
 							}
-						}
-						
-						int floor = (int) Math.floor(Math.sqrt(num));
-						int ceil = (int) Math.ceil(Math.sqrt(num));
-						
-						if (floor == ceil && floor * ceil == num) {
-							max = Math.max(max, num);
 						}
 					}
 				}
