@@ -10,33 +10,23 @@ public class Main {
 		int[] arr = new int[N];
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int r = 0;
-		
+
 		for (int i = 0; i < N; i++) {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
-		
+
 		int[] presum = new int[N + 1];
-				
+
 		for (int i = 1; i <= N; i++) {
 			presum[i] = presum[i - 1] + arr[i - 1];
 		}
-		
-		for (int i = 0; i < N; i++) {
-			if (i > 1) {
-				for (int j = 1; j < i; j++) {
-					r = Math.max(r, presum[i + 1] - presum[1] + presum[i + 1] - presum[j + 1] - arr[j]);
-				}
-			}
-			
-			r = Math.max(r, presum[i + 1] - presum[1] + presum[N] - presum[i] - arr[N - 1]);
-			
-			if (i < N - 2) {
-				for (int j = i + 1; j < N - 1; j++) {
-					r = Math.max(r, presum[N] - presum[i] - arr[N - 1] + presum[j + 1] - presum[i] - arr[j] * 2);
-				}
-			}
+
+		for (int i = 1; i < N - 1; i++) {
+			r = Math.max(r, presum[N] - presum[1] + presum[N] - presum[i + 1] - arr[i]);
+			r = Math.max(r, presum[N] - presum[0] + presum[i + 1] - presum[0] - arr[N - 1] - arr[i] * 2);
+			r = Math.max(r, presum[N] - presum[i] + presum[i + 1] - presum[1] - arr[N - 1]);
 		}
-		
+
 		System.out.println(r);
 	}
 }
