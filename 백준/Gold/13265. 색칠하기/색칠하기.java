@@ -32,9 +32,10 @@ public class Main {
 				graph.get(y).add(x);
 			}
 			
+			int[] isVisit = new int[n + 1];
+			
 			for (int i = 1; i <= n; i++) {
 				Queue<Integer> q = new LinkedList<Integer>();
-				int[] isVisit = new int[n + 1];
 				
 				q.add(i);
 				if (isVisit[i] != 0) continue;
