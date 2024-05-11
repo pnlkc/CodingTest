@@ -17,18 +17,9 @@ class Main {
 		int result = Integer.MAX_VALUE;
 
 		Queue<Pos> q = new LinkedList<>();
-		int[][][] isVisit = new int[N + 1][N + 1][2];
-		
-		for (int i = 0; i <= N; i++) {
-			for (int j = 0; j <= N; j++) {
-				for (int k = 0; k < 2; k++) {					
-					isVisit[i][j][k] = Integer.MAX_VALUE;
-				}
-			}
-		}
-		
+		boolean[][][] isVisit = new boolean[N + 1][N + 1][2];
 		q.add(new Pos(A, B, 0, 0));
-		isVisit[A][B][0] = 0;
+		isVisit[A][B][0] = true;
 		
 
 		while (!q.isEmpty()) {
@@ -45,14 +36,14 @@ class Main {
 				int aR = (c.A + DA) % N;
 				if (aR == 0) aR = N;
 
-				if (isVisit[aL][c.B][1] > c.num + 1) {
+				if (!isVisit[aL][c.B][1]) {
 					q.add(new Pos(aL, c.B, c.num + 1, 1));
-					isVisit[aL][c.B][1] = c.num + 1;
+					isVisit[aL][c.B][1] = true;
 				}
 
-				if (isVisit[aR][c.B][1] > c.num + 1) {
+				if (!isVisit[aR][c.B][1]) {
 					q.add(new Pos(aR, c.B, c.num + 1, 1));
-					isVisit[aR][c.B][1] = c.num + 1;
+					isVisit[aR][c.B][1] = true;
 				}
 			} else {
 				int bL = (c.B - DB) % N;
@@ -61,14 +52,14 @@ class Main {
 				int bR = (c.B + DB) % N;
 				if (bR == 0) bR = N;
 
-				if (isVisit[c.A][bL][0] > c.num + 1) {
+				if (!isVisit[c.A][bL][0]) {
 					q.add(new Pos(c.A, bL, c.num + 1, 0));
-					isVisit[c.A][bL][0] = c.num + 1;
+					isVisit[c.A][bL][0] = true;
 				}
 				
-				if (isVisit[c.A][bR][0] > c.num + 1) {
+				if (!isVisit[c.A][bR][0]) {
 					q.add(new Pos(c.A, bR, c.num + 1, 0));
-					isVisit[c.A][bR][0] = c.num + 1;
+					isVisit[c.A][bR][0] = true;
 				}
 			}
 
