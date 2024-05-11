@@ -14,19 +14,18 @@ class Main {
 		int B = Integer.parseInt(st.nextToken());
 		int DA = Integer.parseInt(st.nextToken());
 		int DB = Integer.parseInt(st.nextToken());
-		int result = Integer.MAX_VALUE;
 
 		Queue<Pos> q = new LinkedList<>();
 		boolean[][][] isVisit = new boolean[N + 1][N + 1][2];
 		q.add(new Pos(A, B, 0, 0));
 		isVisit[A][B][0] = true;
-		
 
 		while (!q.isEmpty()) {
 			Pos c = q.poll();
-			
+
 			if (c.A == c.B) {
-				result = Math.min(result, c.num);
+				System.out.println(c.num);
+				return;
 			}
 
 			if (c.isATurn == 0) {
@@ -34,7 +33,8 @@ class Main {
 				if (aL <= 0)
 					aL += N;
 				int aR = (c.A + DA) % N;
-				if (aR == 0) aR = N;
+				if (aR == 0)
+					aR = N;
 
 				if (!isVisit[aL][c.B][1]) {
 					q.add(new Pos(aL, c.B, c.num + 1, 1));
@@ -50,13 +50,14 @@ class Main {
 				if (bL <= 0)
 					bL += N;
 				int bR = (c.B + DB) % N;
-				if (bR == 0) bR = N;
+				if (bR == 0)
+					bR = N;
 
 				if (!isVisit[c.A][bL][0]) {
 					q.add(new Pos(c.A, bL, c.num + 1, 0));
 					isVisit[c.A][bL][0] = true;
 				}
-				
+
 				if (!isVisit[c.A][bR][0]) {
 					q.add(new Pos(c.A, bR, c.num + 1, 0));
 					isVisit[c.A][bR][0] = true;
@@ -65,11 +66,7 @@ class Main {
 
 		}
 
-		if (result == Integer.MAX_VALUE) {			
-			System.out.println("Evil Galazy");
-		} else {
-			System.out.println(result);
-		}
+		System.out.println("Evil Galazy");
 	}
 }
 
