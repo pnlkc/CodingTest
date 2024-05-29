@@ -21,8 +21,9 @@ fun main() {
 
     while (pq.isNotEmpty()) {
         val (cn, ct) = pq.poll()!!
-
+        
         if (cn == N - 1) continue
+        if (dist[N - 1] != -1L && dist[N - 1] <= ct) continue
         if (dist[cn] != -1L && dist[cn] < ct) continue
 
         for ((nn, nt) in graph[cn]) {
