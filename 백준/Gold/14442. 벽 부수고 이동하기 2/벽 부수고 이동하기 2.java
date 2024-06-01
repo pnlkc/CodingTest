@@ -16,7 +16,6 @@ class Main {
 		int K = Integer.parseInt(st.nextToken());
 		int[][] map = new int[N][M];
 		int[][][] isVisit = new int[N][M][K + 1];
-		int result = Integer.MAX_VALUE;
 
 		for (int i = 0; i < N; i++) {
 			String input = br.readLine();
@@ -43,9 +42,9 @@ class Main {
 			Pos c = q.poll();
 			
 			if (c.x == M - 1 && c.y == N - 1) {
-				result = Math.min(result, c.time);
+				System.out.println(c.time);
+				return;
 			}
-			if (c.time > result) continue;
 			if (isVisit[c.y][c.x][c.cnt] < c.time) continue;
 			
 			for (int d = 0; d < 4; d++) {
@@ -70,10 +69,7 @@ class Main {
 
 		}
 
-		if (result == Integer.MAX_VALUE)
-			System.out.println(-1);
-		else
-			System.out.println(result);
+		System.out.println(-1);
 	}
 }
 
