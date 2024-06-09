@@ -21,18 +21,17 @@ class Main {
 		Arrays.sort(arr, (a, b) -> a[0] - b[0]);
 
 		int num = 0;
-		int pos = 0;
+		int pos = arr[0][0] - 1;
 
 		for (int[] next : arr) {
-			if (next[0] > pos) pos = next[0];
-			if (next[1] > pos) {
-				num += (next[1] - pos) / L;
-				pos += (next[1] - pos) / L * L;
-				if ((next[1] - pos) % L != 0) {
-					num++;
-					pos += L;
-				}
-			}
+            if (next[1] - Math.max(next[0], pos) < 0) continue;
+            
+			int temp = (next[1] - Math.max(next[0], pos)) / L;
+			if ((next[1] - Math.max(next[0], pos)) % L != 0)
+				temp++;
+
+			num += temp;
+			pos = Math.max(next[0], pos) + L * temp;
 		}
 
 		System.out.println(num);
