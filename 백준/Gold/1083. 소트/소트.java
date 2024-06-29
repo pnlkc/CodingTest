@@ -23,9 +23,7 @@ class Main {
 			int max = 0;
 			int maxIdx = idx;
 			
-			for (int i = idx; i < idx + Math.min(S + 1, N); i++) {
-				if (i >= N) break;
-				
+			for (int i = idx; i < Math.min(idx + S + 1, N); i++) {		
 				if (arr[i] > max) {
 					max = arr[i];
 					maxIdx = i;
