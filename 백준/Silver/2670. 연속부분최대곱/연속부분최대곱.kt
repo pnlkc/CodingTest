@@ -1,12 +1,8 @@
 fun main() {
     val N = readln().toInt()
-    val arr = DoubleArray(N)
-    val dp = DoubleArray(N)
+    val arr = DoubleArray(N) { readln().toDouble() }
+    val dp = DoubleArray(N) 
     var max = 0.0
-
-    for (i in 0 until N) {
-        arr[i] = readln().toDouble()
-    }
 
     dp[0] = arr[0]
 
