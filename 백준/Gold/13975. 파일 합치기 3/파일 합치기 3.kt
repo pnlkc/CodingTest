@@ -1,24 +1,25 @@
 import java.util.PriorityQueue
+import java.util.StringTokenizer
 
 fun main() {
     val sb = StringBuilder()
-    val T = readln().toInt()
     val pq = PriorityQueue<Long>()
 
-    for (tc in 1..T) {
+    for (tc in 1..readln().toInt()) {
         val K = readln().toInt()
-        val list = readln().split(" ").map { it.toLong() }
+        val st = StringTokenizer(readln())
         var sum = 0L
 
         pq.clear()
-        pq.addAll(list)
+        repeat(K) {
+            pq.add(st.nextToken().toLong())
+        }
 
         while (pq.size > 1) {
-            val a = pq.poll()!!
-            val b = pq.poll()!!
-
-            sum += a + b
-            pq.add(a + b)
+            val plus = pq.poll()!! + pq.poll()!!
+            
+            sum += plus
+            pq.add(plus)
         }
 
         sb.appendLine(sum)
