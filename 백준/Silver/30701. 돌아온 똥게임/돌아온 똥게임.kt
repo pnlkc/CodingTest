@@ -18,23 +18,19 @@ fun main() {
     var mIdx = 0
     var eIdx = 0
 
-    while (true) {
-        var isChange = false
-
-        while (mIdx < monsterList.size && monsterList[mIdx].x < d) {
-            d += monsterList[mIdx].x
-            mIdx++
-            isChange = true
+    while (mIdx < monsterList.size) {
+        if (monsterList[mIdx].x < d) {
+            d += monsterList[mIdx++].x
+            continue
         }
 
         if (eIdx < equipmentList.size) {
-            d *= equipmentList[eIdx].x
-            eIdx++
-            isChange = true
+            d *= equipmentList[eIdx++].x
+            continue
         }
 
-        if (!isChange) break
+        break
     }
-    
-    println(mIdx + eIdx)
+
+    println(mIdx + equipmentList.size)
 }
