@@ -17,31 +17,22 @@ fun main() {
         var s = 0
         var e = M - 1
 
-
-        while (s < e) {
+        while (s <= e) {
             val m = (s + e) / 2
 
-            if (sL[m] <= pos.x) {
+            if (abs(sL[m] - pos.x) + pos.y <= L) {
+                result++
+                break
+            }
+
+            if (pos.x < sL[m]) {
+                e = m - 1
+            } else if (pos.x > sL[m]) {
                 s = m + 1
             } else {
-                e = m - 1
+                break
             }
         }
-
-        val m = (s + e) / 2
-        var dist = Int.MAX_VALUE
-        if (m < 0) {
-            dist = abs(pos.x - sL[m + 1]) + pos.y
-        } else if (m > 0) {
-            dist = minOf(dist, abs(pos.x - sL[m - 1]) + pos.y)
-            dist = minOf(dist, abs(pos.x - sL[m]) + pos.y)
-            if (m + 1 < M) dist = abs(pos.x - sL[m + 1]) + pos.y
-        } else {
-            dist = minOf(dist, abs(pos.x - sL[m]) + pos.y)
-            if (1 < M) dist = minOf(dist, abs(pos.x - sL[1]) + pos.y)
-        }
-
-        if (dist <= L) result++
     }
 
     println(result)
