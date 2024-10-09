@@ -1,10 +1,11 @@
 fun main() {
     val sb = StringBuilder()
-    
+    val map = mutableMapOf<Int, Boolean>()
+
     while (true) {
         val (N, M) = readln().split(" ").map { it.toInt() }
         if (N == 0 && M == 0) break
-        val map = mutableMapOf<Int, Boolean>()
+        map.clear()
         var cnt = 0
 
         for (i in 0 until N) {
@@ -19,6 +20,6 @@ fun main() {
 
         sb.appendLine(cnt)
     }
-    
+
     print(sb)
 }
