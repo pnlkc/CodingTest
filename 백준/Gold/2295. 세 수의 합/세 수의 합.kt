@@ -1,12 +1,11 @@
 fun main() {
     val N = readln().toInt()
     val arr = IntArray(N)
-    var result = 0
+    var r = 0
     val map = mutableMapOf<Int, Boolean>()
 
     for (i in 0 until N) {
-        val num = readln().toInt()
-        arr[i] = num
+        arr[i] = readln().toInt()
     }
 
     arr.sort()
@@ -19,11 +18,9 @@ fun main() {
 
     for (i in N - 1 downTo 0) {
         for (j in i - 1 downTo 0) {
-            if (map[arr[i] - arr[j]] != null) {
-                result = maxOf(result, arr[i])
-            }
+            if (map[arr[i] - arr[j]] != null) r = maxOf(r, arr[i])
         }
     }
 
-    println(result)
+    println(r)
 }
