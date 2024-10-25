@@ -1,20 +1,18 @@
 import java.util.Stack
 
 fun main() {
-    val input = readln()
+    val str = readln()
     val s = Stack<Char>()
-    var result = 0
+    var r = 0
 
-    for (i in input.indices) {
-        val c = input[i]
-
-        if (c == '(') {
-            s.push(c)
+    for (i in str.indices) {
+        if (str[i] == '(') {
+            s.push(str[i])
         } else {
             s.pop()
-            result += if (i > 0 && input[i - 1] == '(') s.size else 1
+            r += if (i > 0 && str[i - 1] == '(') s.size else 1
         }
     }
-    
-    println(result)
+
+    println(r)
 }
