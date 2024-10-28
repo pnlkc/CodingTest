@@ -43,7 +43,6 @@ fun calc(idx: Int) {
         map[y][x] = (k + 'A'.code).toChar()
         isUsed[k] = true
         calc(idx + 1)
-        map[y][x] = 'x'
         isUsed[k] = false
     }
 }
