@@ -3,6 +3,7 @@ data class Data(val x: Int, val y: Int, val r: Int)
 var result = 0
 
 fun main() {
+    val sb = StringBuilder()
     val T = readln().toInt()
 
     for (tc in 1..T) {
@@ -20,15 +21,17 @@ fun main() {
         for (i in 0 until N - 1) {
             for (j in i + 1 until N) {
                 val range = (graph[i].r + graph[j].r) * (graph[i].r + graph[j].r)
-                
+
                 if (calcDist(graph[i], graph[j]) <= range) {
                     union(i, j, parent, rank)
                 }
             }
         }
 
-        println(result)
+        sb.appendLine(result)
     }
+
+    print(sb)
 }
 
 fun find(node: Int, parent: IntArray, rank: IntArray): Int {
