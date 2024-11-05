@@ -6,22 +6,20 @@ fun main() {
 
     for (tc in 1..T) {
         val N = readln().toInt()
-        val list = mutableListOf<Pair<Int, Int>>()
+        val arr = IntArray(N)
         var st: StringTokenizer
 
         for (i in 1..N) {
             st = StringTokenizer(readln())
-            list.add(st.nextToken().toInt() to st.nextToken().toInt())
+            arr[st.nextToken().toInt() - 1] = st.nextToken().toInt()
         }
-
-        list.sortBy { it.first }
 
         var r = 0
         var min = Int.MAX_VALUE
 
-        for (pair in list) {
-            if (pair.second < min) {
-                min = pair.second
+        for (num in arr) {
+            if (num < min) {
+                min = num
                 r++
             }
         }
