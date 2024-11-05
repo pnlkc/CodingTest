@@ -1,3 +1,5 @@
+import java.util.StringTokenizer
+
 fun main() {
     val sb = StringBuilder()
     val T = readln().toInt()
@@ -5,10 +7,11 @@ fun main() {
     for (tc in 1..T) {
         val N = readln().toInt()
         val list = mutableListOf<Pair<Int, Int>>()
+        var st: StringTokenizer
 
         for (i in 1..N) {
-            val (a, b) = readln().split(" ").map { it.toInt() }
-            list.add(a to b)
+            st = StringTokenizer(readln())
+            list.add(st.nextToken().toInt() to st.nextToken().toInt())
         }
 
         list.sortBy { it.first }
