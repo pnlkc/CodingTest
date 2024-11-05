@@ -19,9 +19,9 @@ fun main() {
         var r = 0
         var min = Int.MAX_VALUE
 
-        for ((_, b) in list) {
-            if (b < min) {
-                min = b
+        for (pair in list) {
+            if (pair.second < min) {
+                min = pair.second
                 r++
             }
         }
