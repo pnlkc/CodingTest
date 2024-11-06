@@ -1,7 +1,7 @@
 var b = 0
 var list = listOf<Int>()
 var isUsed = booleanArrayOf()
-var result = Long.MAX_VALUE
+var result = Int.MAX_VALUE
 
 fun main() {
     val (A, B) = readln().split(" ").map { it.toInt() }
@@ -19,16 +19,16 @@ fun main() {
     b = B
     pick("", B.toString().map { it.digitToInt() }.sorted())
 
-    println(if (result != Long.MAX_VALUE) result else -1)
+    println(if (result != Int.MAX_VALUE) result else -1)
 }
 
 fun pick(str: String, target: List<Int>) {
     if (str.length == list.size) {
-        if (str[0] != '0' && str.toLong() < b) {
-            result = if (result == Long.MAX_VALUE) {
-                str.toLong()
+        if (str[0] != '0' && str.toInt() < b) {
+            result = if (result == Int.MAX_VALUE) {
+                str.toInt()
             } else {
-                maxOf(result, str.toLong())
+                maxOf(result, str.toInt())
             }
         }
         return
