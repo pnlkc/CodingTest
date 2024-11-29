@@ -7,16 +7,13 @@ fun main() {
     val s = Stack<D>()
     var r = 0
 
-    for (t in 1..N) {
+    repeat(N) {
         val l = readln().split(" ").map { it.toInt() }
-        
-        if (l[0] == 0 && s.isNotEmpty()) {
-            val c = s.pop()!!
-            s.push(D(c.x, c.y - 1))
+        when (l[0]) {
+            0 -> if (s.isNotEmpty()) s.push(s.pop().let { D(it.x, it.y - 1) })
+            1 -> s.push(D(l[1], l[2] - 1))
         }
-        if (l[0] == 1) s.push(D(l[1], l[2] - 1))
-
-        if (s.isNotEmpty() && s.peek().y == 0) r += s.pop()!!.x
+        if (s.isNotEmpty() && s.peek().y == 0) r += s.pop().x
     }
 
     println(r)
