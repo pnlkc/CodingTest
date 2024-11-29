@@ -1,28 +1,22 @@
 import java.util.Stack
-import java.util.StringTokenizer
+
+data class D(val x: Int, val y: Int)
 
 fun main() {
     val N = readln().toInt()
-    val s = Stack<Pair<Int, Int>>()
+    val s = Stack<D>()
     var r = 0
 
     for (t in 1..N) {
-        val st = StringTokenizer(readln())
-        if (st.nextToken().toInt() == 0) {
-            if (s.isNotEmpty()) {
-                val c = s.pop()!!
-                s.push(c.first to c.second - 1)
-            }
-        } else {
-            val A = st.nextToken().toInt()
-            val T = st.nextToken().toInt()
-
-            s.push(A to T - 1)
+        val l = readln().split(" ").map { it.toInt() }
+        
+        if (l[0] == 0 && s.isNotEmpty()) {
+            val c = s.pop()!!
+            s.push(D(c.x, c.y - 1))
         }
+        if (l[0] == 1) s.push(D(l[1], l[2] - 1))
 
-        if (s.isNotEmpty() && s.peek().second == 0) {
-            r += s.pop()!!.first
-        }
+        if (s.isNotEmpty() && s.peek().y == 0) r += s.pop()!!.x
     }
 
     println(r)
