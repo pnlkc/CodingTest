@@ -1,9 +1,10 @@
 fun main() {
     val N = readln().toInt()
-    val arr = Array(N + 1) { 0L }
+    val NUM = 1_000_000
+    val arr = LongArray(N + 1)
 
     for (i in 1..N) {
-        arr[i] = readln().toLong() * 1_000_000 + i
+        arr[i] = readln().toLong() * NUM + i
     }
 
     arr.sort()
@@ -11,7 +12,7 @@ fun main() {
     var max = 0L
 
     for (i in N downTo 1) {
-        max = maxOf(max, arr[i] % 1_000_000 - i)
+        max = maxOf(max, arr[i] % NUM - i)
     }
 
     println(max + 1)
