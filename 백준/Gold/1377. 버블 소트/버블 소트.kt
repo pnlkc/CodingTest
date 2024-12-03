@@ -1,17 +1,17 @@
 fun main() {
     val N = readln().toInt()
-    val arr = Array(N + 1) { 0 to 0 }
+    val arr = Array(N + 1) { 0L }
 
     for (i in 1..N) {
-        arr[i] = readln().toInt() to i
+        arr[i] = readln().toLong() * 1_000_000 + i
     }
 
-    arr.sortBy { p: Pair<Int, Int> -> p.first }
+    arr.sort()
 
-    var max = 0
+    var max = 0L
 
     for (i in N downTo 1) {
-        if (arr[i].second - i > max) max = arr[i].second - i
+        max = maxOf(max, arr[i] % 1_000_000 - i)
     }
 
     println(max + 1)
