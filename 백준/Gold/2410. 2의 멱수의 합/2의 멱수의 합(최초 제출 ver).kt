@@ -1,5 +1,8 @@
 import kotlin.math.pow
 
+// 메모리 : 118708KB
+// 시간 : 976ms
+
 fun main() {
     val N = readln().toInt()
     val dp = Array(N + 1) { IntArray(21) }
