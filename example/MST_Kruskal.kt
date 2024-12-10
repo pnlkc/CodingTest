@@ -56,9 +56,7 @@ class UnionFind(n: Int) {
 
     // 최상위 루트 노드를 찾는 메소드입니다
     private fun find(node: Int): Int {
-        if (parent[node] != node) {
-            return parent[node] = find(parent[node]) // 부모 노드 값 갱신을 통해 시간복잡도를 줄일 수 있습니다
-        }
+        if (parent[node] != node) parent[node] = find(parent[node]) // 부모 노드 값 갱신을 통해 시간복잡도를 줄일 수 있습니다
         return parent[node]
     }
 
