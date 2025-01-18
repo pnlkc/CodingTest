@@ -21,5 +21,6 @@ fun main() {
             dp[j][i + 1] = (dp[j][i + 1] + dp[j][i]) % NUM
         }
     }
+    
     println(dp[4][N])
 }
