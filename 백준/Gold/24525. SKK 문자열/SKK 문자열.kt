@@ -9,12 +9,12 @@ fun main() {
         cnt[0][i + 1] = cnt[0][i]
         cnt[1][i + 1] = cnt[1][i]
 
-        if (S[i] == 'S') cnt[0][i + 1]++
+        if (S[i] == 'S') cnt[0][i + 1] += 2
         if (S[i] == 'K') cnt[1][i + 1]++
     }
 
     for (i in 0..sL) {
-        val idx = cnt[0][i] * 2 - cnt[1][i] + 100_000
+        val idx = cnt[0][i] - cnt[1][i] + 100_000
 
         if (iL[idx] == -1) {
             iL[idx] = i
