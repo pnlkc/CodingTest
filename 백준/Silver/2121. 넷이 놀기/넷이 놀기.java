@@ -19,12 +19,8 @@ class Pos {
 
     @Override
     public int hashCode() {
-        long prime = 31;
-        long result = x;
-        result = prime * result + y;
-        return (int) (result ^ (result >>> 32));
+        return x ^ (y * 31);
     }
-
 }
 
 public class Main {
