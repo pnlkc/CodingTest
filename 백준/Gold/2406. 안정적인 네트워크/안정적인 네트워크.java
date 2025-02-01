@@ -1,36 +1,23 @@
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.PriorityQueue;
-import java.util.StringTokenizer;
+import java.io.InputStreamReader;
+import java.util.*;
 
 public class Main {
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringBuilder sb = new StringBuilder();
-    static StringTokenizer st;
-    static int[] parent, rank;
-    static int sum = 0, cnt = 0;
-
-    static class Node implements Comparable<Node> {
-        int u, v, d;
-
-        public Node(int u, int v, int d) {
-            this.u = u;
-            this.v = v;
-            this.d = d;
-        }
-
-        @Override
-        public int compareTo(Node other) {
-            return this.d - other.d;
-        }
-    }
+    static int[] parent;
+    static int[] rank;
+    static int sum = 0;
+    static int result = 0;
+    static int cnt = 0;
 
     public static void main(String[] args) throws IOException {
-        st = new StringTokenizer(br.readLine());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        PriorityQueue<Node> pq = new PriorityQueue<>();
+
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(n1 -> n1.d));
 
         parent = new int[n];
         rank = new int[n];
@@ -41,14 +28,20 @@ public class Main {
 
         for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
-            union(Integer.parseInt(st.nextToken()) - 1, Integer.parseInt(st.nextToken()) - 1);
+            int a = Integer.parseInt(st.nextToken()) - 1;
+            int b = Integer.parseInt(st.nextToken()) - 1;
+
+            union(a, b, 0);
         }
 
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
+            int num;
+
             for (int j = 0; j < n; j++) {
-                int num = Integer.parseInt(st.nextToken());
+                num = Integer.parseInt(st.nextToken());
                 if (i == 0 || j == 0 || i == j) continue;
+
                 pq.add(new Node(i, j, num));
             }
         }
@@ -56,26 +49,22 @@ public class Main {
         while (!pq.isEmpty()) {
             Node c = pq.poll();
 
-            if (find(c.u) != find(c.v)) {
-                union(c.u, c.v);
-                sum += c.d;
-                cnt++;
-                sb.append((c.u + 1)).append(" ").append((c.v + 1)).append("\n");
-            }
+            union(c.u, c.v, c.d);
+            if (cnt == n - 2) break;
         }
 
-        System.out.println(sum + " " + cnt);
+        System.out.println(sum + " " + result);
         System.out.print(sb);
     }
 
-    static int find(int node) {
+    public static int find(int node) {
         if (parent[node] != node) {
             parent[node] = find(parent[node]);
         }
         return parent[node];
     }
 
-    static void union(int node1, int node2) {
+    public static void union(int node1, int node2, int num) {
         int root1 = find(node1);
         int root2 = find(node2);
 
@@ -88,6 +77,24 @@ public class Main {
         } else {
             parent[root2] = root1;
             rank[root1]++;
+        }
+
+        sum += num;
+        cnt++;
+
+        if (num != 0) {
+            result++;
+            sb.append((node1 + 1)).append(" ").append(node2 + 1).append("\n");
+        }
+    }
+
+    static class Node {
+        int u, v, d;
+
+        Node(int u, int v, int d) {
+            this.u = u;
+            this.v = v;
+            this.d = d;
         }
     }
 }
