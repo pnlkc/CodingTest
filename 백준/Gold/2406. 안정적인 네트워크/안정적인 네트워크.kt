@@ -1,6 +1,9 @@
+package com.example.notepad
+
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.util.*
+import java.util.PriorityQueue
+import java.util.StringTokenizer
 
 data class Node(val u: Int, val v: Int, val d: Int)
 
@@ -13,7 +16,7 @@ var cnt = 0
 
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
-    val st = StringTokenizer(br.readLine())
+    var st = StringTokenizer(br.readLine())
     val n = st.nextToken().toInt()
     val m = st.nextToken().toInt()
 
@@ -23,18 +26,18 @@ fun main() {
     rank = IntArray(n)
 
     repeat(m) {
-        val edge = StringTokenizer(br.readLine())
-        val a = edge.nextToken().toInt() - 1
-        val b = edge.nextToken().toInt() - 1
+        st = StringTokenizer(br.readLine())
+        val a = st.nextToken().toInt() - 1
+        val b = st.nextToken().toInt() - 1
 
         union(a, b, 0)
     }
 
     repeat(n) { i ->
-        val st2 = StringTokenizer(br.readLine())
+        st = StringTokenizer(br.readLine())
 
         for (j in 0 until n) {
-            val num = st2.nextToken().toInt()
+            val num = st.nextToken().toInt()
             if (i == 0 || j == 0 || i == j) continue
 
             pq.add(Node(i, j, num))
@@ -42,7 +45,7 @@ fun main() {
     }
 
     while (pq.isNotEmpty()) {
-        val c = pq.poll()
+        val c = pq.poll()!!
 
         union(c.u, c.v, c.d)
         if (cnt == n - 2) break
