@@ -1,6 +1,11 @@
 fun main() {
+    val sb = StringBuilder()
     val N = readln().toInt()
-    val str = readln().toCharArray().sorted()
+    val str = readln()
+    
+    repeat(N) {
+        sb.append(str)
+    }
 
-    println(str.joinToString("").repeat(N))
+    println(sb)
 }
