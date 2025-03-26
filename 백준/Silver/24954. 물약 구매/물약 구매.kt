@@ -1,11 +1,13 @@
 var min = Int.MAX_VALUE
 var arr = arrayOf<IntArray>()
+var cL = mutableListOf(0)
+var pick = intArrayOf()
 
 fun main() {
     val N = readln().toInt()
-    val cL = listOf(0) + readln().split(" ").map { it.toInt() }
     arr = Array(N + 1) { IntArray(N + 1) }
-
+    cL.addAll(readln().split(" ").map { it.toInt() })
+    pick = IntArray(N)
 
     for (i in 1..N) {
         val p = readln().toInt()
@@ -17,30 +19,27 @@ fun main() {
         }
     }
 
-    calc(mutableListOf(), 0, N, cL.toMutableList())
+    calc(0, 0, N)
     println(min)
 }
 
-fun calc(pL: MutableList<Int>, cost:Int, n: Int, cL: MutableList<Int>) {
+fun calc(cnt: Int, cost: Int, n: Int) {
     if (min <= cost) return
 
-    if (pL.size == n) {
+    if (cnt == n) {
         min = minOf(min, cost)
         return
     }
 
     for (i in 1..n) {
-        if (pL.contains(i)) continue
-        val tempPL = pL.toMutableList()
-        val tempCL = cL.toMutableList()
+        if (pick.contains(i)) continue
 
-        tempPL.add(i)
+        pick[cnt] = i
+        (1..n).forEach { cL[it] -= arr[i][it] }
 
-        for (j in 1..n) {
-            tempCL[j] -= arr[i][j]
-            if (tempCL[j] <= 0) tempCL[j] = 1
-        }
+        calc(cnt + 1, cost + maxOf(1, cL[i]), n)
 
-        calc(tempPL, cost + cL[i], n, tempCL)
+        pick[cnt] = 0
+        (1..n).forEach { cL[it] += arr[i][it] }
     }
 }
