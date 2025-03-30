@@ -12,7 +12,7 @@ fun main() {
     var st = StringTokenizer(br.readLine())
     val N = st.nextToken().toInt()
     val M = st.nextToken().toInt()
-    val graph = Array(N + 1) { ArrayList<Data>() }
+    val graph = Array(N + 1) { mutableListOf<Data>() }
     var cnt = 0
 
     for (i in 0 until M) {
