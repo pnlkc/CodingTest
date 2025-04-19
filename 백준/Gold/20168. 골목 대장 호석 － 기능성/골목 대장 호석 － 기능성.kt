@@ -1,6 +1,8 @@
-import java.util.LinkedList
+import java.util.PriorityQueue
 
-data class Node(val a: Int, val b: Int, val d: Int)
+data class Node(val a: Int, val b: Int, val d: Int) : Comparable<Node> {
+    override fun compareTo(other: Node): Int = this.d - other.d
+}
 
 fun main() {
     val (N, M, A, B, C) = readln().split(" ").map { it.toInt() }
@@ -13,20 +15,26 @@ fun main() {
         map[v].add(Node(v, u, d))
     }
 
-    val q = LinkedList<Node>()
+    val pq = PriorityQueue<Node>()
     var min = -1
-    
+    val dist = Array(N + 1) { Int.MAX_VALUE to Int.MAX_VALUE }
 
-    while (q.isNotEmpty()) {
-        val (cn, cMax, cd) = q.poll()!!
+    pq.add(Node(A, 0, 0))
+    dist[A] = 0 to 0
 
-        if (min != -1 && cMax > min) continue
+    while (pq.isNotEmpty()) {
+        val (cn, cMax, cd) = pq.poll()!!
+
+        if (min != -1 && cMax >= min) continue
         if (cn == B) min = if (min == -1) cMax else minOf(min, cMax)
 
         for ((_, nn, nd) in map[cn]) {
             if (cd + nd > C) continue
+            if (dist[nn].first <= maxOf(cMax, nd) && dist[nn].second <= cd + nd) continue
 
-            q.add(Node(nn, maxOf(cMax, nd), cd + nd))
+            if (dist[nn].first > maxOf(cMax, nd) && dist[nn].second > cd + nd) dist[nn] = maxOf(cMax, nd) to cd + nd
+
+            pq.add(Node(nn, maxOf(cMax, nd), cd + nd))
         }
     }
 
