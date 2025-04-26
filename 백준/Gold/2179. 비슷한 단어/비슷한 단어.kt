@@ -1,9 +1,11 @@
 fun main() {
     val N = readln().toInt()
     val arr = Array(N) { "" }
+    val map = mutableMapOf<String, Int>()
 
     for (i in 0 until N) {
         arr[i] = readln()
+        if (map[arr[i]] == null) map[arr[i]] = i
     }
 
     val sL = arr.sorted()
@@ -22,8 +24,8 @@ fun main() {
                 if (sL[i][idx] == sL[j][idx]) idx++ else break
             }
 
-            val a = arr.indexOfFirst { it == sL[i] }
-            val b = arr.indexOfFirst { it == sL[j] }
+            val a = map[sL[i]]!!
+            val b = map[sL[j]]!!
 
             if (max < idx) {
                 max = idx
