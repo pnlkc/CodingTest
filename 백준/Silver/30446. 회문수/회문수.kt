@@ -26,10 +26,11 @@ fun main() {
     }
 
     while (true) {
-        val num = "$start${start.toString().reversed().let { 
-            if (isOdd) it.drop(1)
-            else it
-        }}".toLong()
+        val num = "$start${
+            start.toString().reversed().run {
+                if (isOdd) drop(1) else this
+            }
+        }".toLong()
 
         if (num > N.toLong()) break
         result++
