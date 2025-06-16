@@ -10,7 +10,7 @@ fun main() {
         arr[i] = Data(d, t)
     }
 
-    arr.sortWith(compareBy<Data> { it.t }.thenBy { it.d })
+    arr.sortWith(compareBy<Data> { it.t })
 
     var result = arr[n - 1].t
 
