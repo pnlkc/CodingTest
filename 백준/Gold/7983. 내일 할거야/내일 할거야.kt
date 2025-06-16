@@ -7,8 +7,9 @@ data class Data(val d: Int, val t: Int)
 fun main() {
     val br = BufferedReader(InputStreamReader(System.`in`))
     val n = br.readLine().toInt()
+    var st: StringTokenizer
     val arr = Array(n) {
-        val st = StringTokenizer(br.readLine())
+        st = StringTokenizer(br.readLine())
         Data(st.nextToken().toInt(), st.nextToken().toInt())
     }.sortedBy { it.t }
 
