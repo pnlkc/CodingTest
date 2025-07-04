@@ -23,5 +23,7 @@ fun main() {
         }
     }
 
+    if (N == 1 || M == 1) if (sx != ex || sy != ey) result = false
+
     println(if (result) "YES" else "NO")
 }
