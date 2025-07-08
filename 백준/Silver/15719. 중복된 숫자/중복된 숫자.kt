@@ -1,55 +1,29 @@
-import java.io.InputStream
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 fun main() {
-    val reader = FastReader()
-    val N = reader.nextInt()
+    val br = BufferedReader(InputStreamReader(System.`in`))
+    val N = br.readLine().toInt()
     val isExist = BooleanArray(N + 1)
+    var cnt = 0
+    var num = 0
 
-    repeat(N) {
-        val num = reader.nextInt()
+    while (cnt < N) {
+        val c = br.read().toChar()
 
-        if (isExist[num]) {
-            println(num)
-            return
+        if (c !in '0'..'9') {
+            if (isExist[num]) {
+                println(num)
+                return
+            }
+
+            isExist[num] = true
+            num = 0
+            cnt++
+            continue
+        } else {
+            num *= 10
+            num += c.digitToInt()
         }
-
-        isExist[num] = true
-    }
-}
-
-class FastReader(private val input: InputStream = System.`in`) {
-    private val buffer = ByteArray(1 shl 16)
-    private var ptr = 0
-    private var len = 0
-
-    private fun readByte(): Byte {
-        if (ptr >= len) {
-            len = input.read(buffer)
-            ptr = 0
-            if (len == -1) return -1
-        }
-        return buffer[ptr++]
-    }
-
-    fun nextInt(): Int {
-        var b = readByte()
-
-        while (b <= ' '.code.toByte()) b = readByte()
-
-        var neg = false
-
-        if (b == '-'.code.toByte()) {
-            neg = true
-            b = readByte()
-        }
-
-        var n = 0
-
-        while (b in '0'.code.toByte()..'9'.code.toByte()) {
-            n = n * 10 + (b - '0'.code.toByte())
-            b = readByte()
-        }
-
-        return if (neg) -n else n
     }
 }
