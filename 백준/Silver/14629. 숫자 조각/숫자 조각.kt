@@ -8,9 +8,10 @@ var result = Long.MAX_VALUE
 var len = 0
 
 fun main() {
-    val N = readln().toLong()
+    val N = readln()
+    val first = N[0].digitToInt()
 
-    n = N
+    n = N.toLong()
     len = n.toString().length
     pick = IntArray(10)
 
@@ -26,8 +27,11 @@ fun main() {
         isUsed[9] = false
     }
 
-    calc(10 - len)
-
+    isUsed[first] = true
+    pick[10 - len] = first
+    calc(11 - len)
+    isUsed[first] = false
+    
     if (len < 10) {
         isUsed[1] = true
         pick[9 - len] = 1
