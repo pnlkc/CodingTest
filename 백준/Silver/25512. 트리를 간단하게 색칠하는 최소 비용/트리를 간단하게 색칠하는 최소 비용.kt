@@ -35,21 +35,6 @@ fun main() {
             if (isVisit[next]) continue
 
             wResult += if ((cd + 1) % 2 == 0) cost[next][0] else cost[next][1]
-            isVisit[next] = true
-            q.add(next to cd + 1)
-        }
-    }
-
-    isVisit.fill(false)
-    q.add(0 to 0)
-    isVisit[0] = true
-
-    while (q.isNotEmpty()) {
-        val (cn, cd) = q.poll()!!
-
-        for (next in map[cn]) {
-            if (isVisit[next]) continue
-
             bResult += if ((cd + 1) % 2 != 0) cost[next][0] else cost[next][1]
             isVisit[next] = true
             q.add(next to cd + 1)
