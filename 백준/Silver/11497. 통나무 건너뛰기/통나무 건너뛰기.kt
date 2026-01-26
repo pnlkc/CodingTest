@@ -9,10 +9,7 @@ fun main() {
 
         for (i in 0 until n - 2 step 2) {
             max = maxOf(max, list[i + 2] - list[i])
-        }
-
-        for (i in 1 until n - 2 step 2) {
-            max = maxOf(max, list[i + 2] - list[i])
+            if (i + 3 < n) max = maxOf(max, list[i + 3] - list[i + 1])
         }
 
         sb.appendLine(max)
