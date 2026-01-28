@@ -1,6 +1,6 @@
 fun main() {
     val n = readln().toInt()
-    val hArr = readln().split(" ").map { it.toInt() }.toTypedArray().sortedArrayDescending()
+    val hArr = readln().split(" ").map { it.toInt() }.toIntArray().sortedArrayDescending()
     val NUM = 1_000_000_007
     var result = 0L
 
