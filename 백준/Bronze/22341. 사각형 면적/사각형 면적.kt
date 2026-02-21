@@ -5,6 +5,9 @@ fun main() {
 
     for (i in 0 until c) {
         val (x, y) = readln().split(" ").map { it.toInt() }
+        
+        if (x >= ySize || y >= xSize) continue
+        
         val a = x * xSize
         val b = y * ySize
 
