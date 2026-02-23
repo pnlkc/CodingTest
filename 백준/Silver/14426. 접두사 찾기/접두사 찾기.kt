@@ -25,7 +25,7 @@ class Trie {
     fun add(str: String) {
         var node = root
 
-        for (i in 0..<str.length) {
+        for (i in str.indices) {
             val c = str[i]
             node = node.cN.computeIfAbsent(c) { TrieNode() }
         }
@@ -34,7 +34,7 @@ class Trie {
     fun contains(str: String): Boolean {
         var node: TrieNode? = root
 
-        for (i in 0..<str.length) {
+        for (i in str.indices) {
             val c = str[i]
 
             node = node!!.cN[c]
