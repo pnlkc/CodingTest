@@ -1,22 +1,46 @@
 fun main() {
     val (n, m) = readln().split(" ").map { it.toInt() }
-    val map = mutableMapOf<String, Boolean>()
+    val trie = Trie()
     var cnt = 0
 
     for (i in 0 until n) {
-        var str = readln()
-
-        while (str.isNotEmpty()) {
-            map[str] = true
-            str = str.dropLast(1)
-        }
+        trie.add(readln())
     }
 
     for (i in 0 until m) {
-        val str = readln()
-
-        if (map[str] != null) cnt++
+        if (trie.contains(readln())) cnt++
     }
 
     println(cnt)
+}
+
+class TrieNode {
+    var cN: MutableMap<Char?, TrieNode> = HashMap<Char?, TrieNode>()
+}
+
+// 트라이
+class Trie {
+    var root: TrieNode = TrieNode()
+
+    fun add(str: String) {
+        var node = root
+
+        for (i in 0..<str.length) {
+            val c = str[i]
+            node = node.cN.computeIfAbsent(c) { TrieNode() }
+        }
+    }
+
+    fun contains(str: String): Boolean {
+        var node: TrieNode? = root
+
+        for (i in 0..<str.length) {
+            val c = str[i]
+
+            node = node!!.cN[c]
+            if (node == null) return false
+        }
+
+        return true
+    }
 }
