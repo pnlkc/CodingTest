@@ -3,11 +3,13 @@ import java.util.LinkedList
 fun main() {
     val sb = StringBuilder()
     val t = readln().toInt()
+    val dq = LinkedList<Char>()
 
     for (tc in 1..t) {
         val n = readln().toInt()
         val list = readln().split(" ")
-        val dq = LinkedList<Char>()
+
+        dq.clear()
 
         for (i in 0 until n) {
             val c = list[i][0]
