@@ -12,14 +12,10 @@ fun main() {
         for (i in 0 until n) {
             val c = list[i][0]
 
-            if (dq.isEmpty()) {
-                dq.add(c)
-            } else {
-                if (dq.peekFirst()!! >= c) {
-                    dq.addFirst(c)
-                } else {
-                    dq.addLast(c)
-                }
+            when {
+                dq.isEmpty() -> dq.add(c)
+                dq.peekFirst()!! >= c -> dq.addFirst(c)
+                else -> dq.addLast(c)
             }
         }
 
