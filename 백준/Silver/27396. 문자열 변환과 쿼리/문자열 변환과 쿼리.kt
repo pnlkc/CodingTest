@@ -17,7 +17,7 @@ fun main() {
             
             arr.forEach { c -> if (map[c] == a) map[c] = b }
         } else {
-            s.forEach { c -> sb.append(map[c]) }
+            s.forEach { c -> sb.append(map[c]!!) }
             sb.appendLine()
         }
     }
