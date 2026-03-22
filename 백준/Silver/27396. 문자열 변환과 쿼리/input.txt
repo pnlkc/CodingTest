@@ -1,0 +1,9 @@
+abac 8
+2
+1 a d
+1 d c
+2
+1 A b
+1 c c
+2
+1 c Z
