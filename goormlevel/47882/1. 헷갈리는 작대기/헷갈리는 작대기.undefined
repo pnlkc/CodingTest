@@ -1,0 +1,10 @@
+import java.util.Scanner
+
+fun main(args: Array<String>) {
+    val input = readLine()!!
+
+    println(input.count { it == '1' })
+    println(input.count { it == 'I' })
+    println(input.count { it == 'l' })
+    println(input.count { it == '|' })
+}
