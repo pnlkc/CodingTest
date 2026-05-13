@@ -1,0 +1,17 @@
+fun main(args: Array<String>) {
+    val n = readLine()!!.toInt()
+    val list= readLine()!!.split(" ").map { it.toInt() }
+    var prev = 0
+    var sum = 0
+
+    for (i in 0 until n) {
+        if (list[i] == 0) {
+            prev = 0
+        } else {
+            sum += ++prev
+        }
+    }
+
+
+    println(sum)
+}
