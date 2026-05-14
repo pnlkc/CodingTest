@@ -1,0 +1,26 @@
+fun main(args: Array<String>) {
+    val n = readLine()!!.toInt()
+
+    p@ for (tc in 1..n) {
+        val aL = readLine()!!.split(" ").map { it.toInt() }.drop(1)
+        val bL = readLine()!!.split(" ").map { it.toInt() }.drop(1)
+
+        for (i in 4 downTo 1) {
+            val ac = aL.count { it == i }
+            val bc = bL.count { it == i }
+
+            when {
+                ac > bc -> {
+                    println("A")
+                    continue@p
+                }
+                ac < bc -> {
+                    println("B")
+                    continue@p
+                }
+            }
+        }
+
+        println("D")
+    }
+}
