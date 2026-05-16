@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
 
     if (
         (x1 + x2 <= h && maxOf(y1, y2) <= w) || (x1 + y2 <= h && maxOf(y1, x2) <= w)
-        || (y1 + x2 <= w && maxOf(x1, y2) <= h) || (y1 + y2 <= w && maxOf(x1, x2) <= h)
+        || (y1 + x2 <= h && maxOf(x1, y2) <= w) || (y1 + y2 <= h && maxOf(x1, x2) <= w)
         || (x1 + x2 <= w && maxOf(y1, y2) <= h) || (x1 + y2 <= w && maxOf(y1, x2) <= h)
         || (y1 + x2 <= w && maxOf(x1, y2) <= h) || (y1 + y2 <= w && maxOf(x1, x2) <= h)
     ) {
