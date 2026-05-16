@@ -1,0 +1,16 @@
+fun main(args: Array<String>) {
+    val (h, w) = readLine()!!.split(" ").map { it.toInt() }
+    val (x1, y1) = readLine()!!.split(" ").map { it.toInt() }
+    val (x2, y2) = readLine()!!.split(" ").map { it.toInt() }
+
+    if (
+        (x1 + x2 <= h && maxOf(y1, y2) <= w) || (x1 + y2 <= h && maxOf(y1, x2) <= w)
+        || (y1 + x2 <= w && maxOf(x1, y2) <= h) || (y1 + y2 <= w && maxOf(x1, x2) <= h)
+        || (x1 + x2 <= w && maxOf(y1, y2) <= h) || (x1 + y2 <= w && maxOf(y1, x2) <= h)
+        || (y1 + x2 <= w && maxOf(x1, y2) <= h) || (y1 + y2 <= w && maxOf(x1, x2) <= h)
+    ) {
+        println("YES")
+    } else {
+        println("NO")
+    }
+}
