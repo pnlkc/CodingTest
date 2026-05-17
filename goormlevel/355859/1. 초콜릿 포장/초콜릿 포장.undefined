@@ -1,0 +1,24 @@
+fun main(args: Array<String>) {
+    val (j, n) = readLine()!!.split(" ").map { it.toInt() }
+    val arr = IntArray(j)
+    var result = 0
+    
+    for (i in 0 until n) {
+        val (r, c) = readLine()!!.split(" ").map { it.toInt() }
+        
+        arr[i] = r * c
+    }
+    
+    arr.sortDescending()
+    
+    for (i in 0 until n) {
+        result += arr[i]
+        
+        if (result >= j) {
+            println(i + 1)
+            return
+        }
+    }
+    
+    println(-1)
+}
