@@ -1,0 +1,14 @@
+fun main(args: Array<String>) {
+    var cnt = 0
+
+    for (i in 0 until 8) {
+        val input = readLine()!!
+        val range = if (i % 2 == 0) 0 until 8 else 1 until 8
+
+        for (j in range step 2) {
+            if (input[j] == '1') cnt++
+        }
+    }
+
+    println(cnt)
+}
