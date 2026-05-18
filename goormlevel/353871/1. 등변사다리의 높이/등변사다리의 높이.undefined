@@ -1,0 +1,10 @@
+package com.example.memo
+
+import kotlin.math.abs
+
+fun main(args: Array<String>) {
+    val (k, d1, d2) = readLine()!!.split(" ").map { it.toInt() }
+    val abs = abs(d1 - d2)
+    
+    println(4 * k * k - abs * abs)
+}
