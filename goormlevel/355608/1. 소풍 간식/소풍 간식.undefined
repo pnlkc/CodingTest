@@ -1,0 +1,7 @@
+fun main(args: Array<String>) {
+    val n = readLine()!!.toInt()
+    val i = n / 2 + n % 2
+    val s = n / 2
+
+    println(i * s)
+}
