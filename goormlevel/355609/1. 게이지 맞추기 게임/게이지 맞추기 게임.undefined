@@ -1,0 +1,12 @@
+fun main(args: Array<String>) {
+    val (d, l, r) = readLine()!!.split(" ").map { it.toInt() }
+    
+    for (i in l..r) {
+        if (i % d == 0) {
+            println("Y")
+            return
+        }
+    }
+    
+    println("N")
+}
