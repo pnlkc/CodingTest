@@ -1,0 +1,7 @@
+import kotlin.math.abs
+
+fun main(args: Array<String>) {
+    val (w, g) = readLine()!!.split(" ").map { it.toInt() }
+
+    println(abs(w * w + g * g - (w + g) * (w + g)))
+}
