@@ -1,0 +1,17 @@
+fun main(args: Array<String>) {
+    val sb = StringBuilder()
+    val s = readLine()!!
+
+    for (i in s.indices) {
+        sb.append(
+            when (s[i]) {
+                '6' -> '9'
+                '9' -> '6'
+                else -> s[i]
+            }
+        )
+
+    }
+
+    println(sb.reverse())
+}
