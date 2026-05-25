@@ -1,0 +1,5 @@
+fun main() {
+    val (h, w) = readLine()!!.split(" ").map { it.toInt() }
+    
+    println(minOf(h, w))
+}
