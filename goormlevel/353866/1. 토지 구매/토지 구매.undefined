@@ -1,0 +1,10 @@
+import kotlin.math.PI
+
+fun main() {
+    val (a1, p1) = readLine()!!.split(" ").map { it.toDouble() }
+    val (r1, p2) = readLine()!!.split(" ").map { it.toDouble() }
+    val e1 = a1 / p1
+    val e2 = (r1 * r1 * PI) / p2
+
+    println(if (e1 > e2) 1 else 2)
+}
