@@ -1,0 +1,5 @@
+fun main() {
+    val (x, y) = readLine()!!.split(" ").map { it.toInt() }
+    
+    println(if (x % 2 == 0 || y % 2 == 0) "E" else "O")
+}
