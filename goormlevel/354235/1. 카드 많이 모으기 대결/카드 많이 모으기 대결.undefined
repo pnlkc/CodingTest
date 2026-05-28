@@ -1,0 +1,11 @@
+fun main() {
+    val (g, b) = readLine()!!.split(" ").map { it.toInt() }
+    
+    println(
+        when {
+            g > b -> "Goorm"
+            g < b -> "Baram"
+            else -> "Tie"
+        }
+    )
+}
