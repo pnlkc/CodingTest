@@ -1,0 +1,8 @@
+import kotlin.math.sqrt
+
+fun main() {
+    val s = readLine()!!.toLong()
+    val sqrt = sqrt(s.toDouble()).toLong()
+
+    println(sqrt * 4)
+}
