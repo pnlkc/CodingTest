@@ -1,0 +1,18 @@
+fun main() {
+    val n = readLine()!!.toInt()
+    val s = readLine()!!
+    val result = CharArray(n)
+
+    result[0] = s[0]
+
+    for (i in 1 until n) {
+        if (result[i - 1] == s[i]) {
+            result[i - 1] = s[i].toUpperCase()
+            result[i] = s[i].toUpperCase()
+        } else {
+            result[i] = s[i]
+        }
+    }
+
+    print(result.joinToString(""))
+}
