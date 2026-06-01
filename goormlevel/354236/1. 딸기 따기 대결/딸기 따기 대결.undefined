@@ -1,0 +1,11 @@
+fun main() {
+    val (a, b, c, d) = readLine()!!.split(" ").map { it.toInt() }
+    val goorm = a * b
+    val baram = c * d
+
+    when {
+        goorm > baram -> println("G")
+        goorm < baram -> println("B")
+        else -> println("D")
+    }
+}
