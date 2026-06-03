@@ -1,0 +1,11 @@
+import kotlin.math.abs
+
+fun main() {
+    val (a, b, c, d) = readLine()!!.split(" ").map { it.toInt() }
+    var sum = 0
+
+    sum += minOf(c, d) * a
+    sum += (d - minOf(c, d)) * b
+
+    println(sum)
+}
