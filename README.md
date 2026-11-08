@@ -24,11 +24,13 @@
 | [0009-palindrome-number](https://github.com/pnlkc/CodingTest/tree/master/0009-palindrome-number) |
 | [0013-roman-to-integer](https://github.com/pnlkc/CodingTest/tree/master/0013-roman-to-integer) |
 | [0066-plus-one](https://github.com/pnlkc/CodingTest/tree/master/0066-plus-one) |
+| [0067-add-binary](https://github.com/pnlkc/CodingTest/tree/master/0067-add-binary) |
 ## String
 |  |
 | ------- |
 | [0013-roman-to-integer](https://github.com/pnlkc/CodingTest/tree/master/0013-roman-to-integer) |
 | [0014-longest-common-prefix](https://github.com/pnlkc/CodingTest/tree/master/0014-longest-common-prefix) |
+| [0067-add-binary](https://github.com/pnlkc/CodingTest/tree/master/0067-add-binary) |
 ## Trie
 |  |
 | ------- |
@@ -49,4 +51,12 @@
 |  |
 | ------- |
 | [0035-search-insert-position](https://github.com/pnlkc/CodingTest/tree/master/0035-search-insert-position) |
+## Bit Manipulation
+|  |
+| ------- |
+| [0067-add-binary](https://github.com/pnlkc/CodingTest/tree/master/0067-add-binary) |
+## Simulation
+|  |
+| ------- |
+| [0067-add-binary](https://github.com/pnlkc/CodingTest/tree/master/0067-add-binary) |
 <!---LeetCode Topics End-->
