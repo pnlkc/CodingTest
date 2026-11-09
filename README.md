@@ -11,6 +11,7 @@
 | [0001-two-sum](https://github.com/pnlkc/CodingTest/tree/master/0001-two-sum) |
 | [0014-longest-common-prefix](https://github.com/pnlkc/CodingTest/tree/master/0014-longest-common-prefix) |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/pnlkc/CodingTest/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [0027-remove-element](https://github.com/pnlkc/CodingTest/tree/master/0027-remove-element) |
 | [0035-search-insert-position](https://github.com/pnlkc/CodingTest/tree/master/0035-search-insert-position) |
 | [0066-plus-one](https://github.com/pnlkc/CodingTest/tree/master/0066-plus-one) |
 ## Hash Table
@@ -48,6 +49,7 @@
 |  |
 | ------- |
 | [0026-remove-duplicates-from-sorted-array](https://github.com/pnlkc/CodingTest/tree/master/0026-remove-duplicates-from-sorted-array) |
+| [0027-remove-element](https://github.com/pnlkc/CodingTest/tree/master/0027-remove-element) |
 ## Binary Search
 |  |
 | ------- |
