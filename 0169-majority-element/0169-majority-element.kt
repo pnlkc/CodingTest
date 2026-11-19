@@ -1,18 +1,21 @@
 class Solution {
     fun majorityElement(nums: IntArray): Int {
-        val cnt = mutableMapOf<Int, Int>()
-        var maxCnt = 0
-        var result = 0
-        
-        for (num in nums) {
-            cnt[num] = cnt.getOrDefault(num, 0) + 1
-            
-            if (cnt[num]!! > maxCnt) {
-                result = num
-                maxCnt = cnt[num]!!
+        var result = nums[0]
+        var cnt = 1
+
+        for (i in 1..nums.lastIndex) {
+            if (cnt == 0) {
+                result = nums[i]
+                cnt++
+            } else {
+                if (result != nums[i]) {
+                    cnt--
+                } else {
+                    cnt++
+                }
             }
         }
-        
+
         return result
     }
 }
